@@ -1,0 +1,158 @@
+! -----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
+
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
+
+
+
+
+
+
+
+rofi.separator-style: none
+rofi.sidebar-mode: false
+rofi.bw: 0
+rofi.columns: 1
+
+rofi.yoffset: 0
+rofi.opacity: 100
+rofi.fake-transparency: false
+rofi.location: 0
+rofi.padding: 700
+rofi.font: RobotoMono 30
+
+rofi.modi:                           combi,calc
+rofi.combi-modi:                     window,run,ssh
+
+rofi.width: 2560
+rofi.fullscreen: false
+
+rofi.fixed-num-lines: true
+
+rofi.eh: 1
+rofi.line-margin: 20
+rofi.lines: 9
+rofi.hide-scrollbar: true
+
+rofi.color-enabled: true
+rofi.color-window: argb:ee282828, #282828, #000000
+rofi.color-normal: argb:0fdf6e3, #44ebdbb2, argb:0eee8d5, argb:0586e75, #ebdbb2
+rofi.color-active: argb:0fdf6e3, #268bd2, argb:0eee8d5, argb:0268bd2, #fdf6e3
+rofi.color-urgent: argb:0fdf6e3, #dc322f, argb:0eee8d5, argb:0dc322f, #fdf6e3
+
+
+
+
+
+! ------------------------------------------------------------------------------
+! Mouse cursor stuff
+! ------------------------------------------------------------------------------
+Xcursor.theme: Adwaita
+Xcursor.size: 20
+
+! ------------------------------------------------------------------------------
+! urxvt stuff
+! ------------------------------------------------------------------------------
+!! General URxvt settings
+URxvt.depth:        32
+URxvt.scrollBar:    false
+URxvt.saveLines: 10000
+URxvt.internalBorder: 12
+
+URxvt.color24:  #076678
+URxvt.color66:  #427b58
+URxvt.color88:  #9d0006
+URxvt.color96:  #8f3f71
+URxvt.color100: #79740e
+URxvt.color108: #8ec07c
+URxvt.color109: #83a598
+URxvt.color130: #af3a03
+URxvt.color136: #b57614
+URxvt.color142: #b8bb26
+URxvt.color167: #fb4934
+URxvt.color175: #d3869b
+URxvt.color208: #fe8019
+URxvt.color214: #fabd2f
+URxvt.color223: #ebdbb2
+URxvt.color228: #f2e5bc
+URxvt.color229: #fbf1c7
+URxvt.color230: #f9f5d7
+URxvt.color234: #1d2021
+URxvt.color235: #282828
+URxvt.color236: #32302f
+URxvt.color237: #3c3836
+URxvt.color239: #504945
+URxvt.color241: #665c54
+URxvt.color243: #7c6f64
+URxvt.color244: #928374
+URxvt.color245: #928374
+URxvt.color246: #a89984
+URxvt.color248: #bdae93
+URxvt.color250: #d5c4a1
+
+
+!! Font settings
+!! URxvt.font: xft:RobotoMono:size=13, xft:Hack for Powerline
+URxvt.font:     xft:Roboto Mono for Powerline:style=Regular:size=12:antialias=true
+URxvt.boldFont:     xft:Roboto Mono for Powerline:style=Bold:size=12:antialias=true
+!! URxvt.boldFont: xft:Hack:bold:size=10:antialias=true
+URxvt.letterSpace: -1
+
+!! Load perl extentions
+URxvt.perl-ext-common: default,matcher,font-size
+
+!! Open links with Ctrl+left mouse in firefox
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: C1
+
+!! Change font size on Control-Plus/Minus
+URxvt.keysym.Control-0x2b: perl:font-size:increase
+URxvt.keysym.Control-0x2d: perl:font-size:decrease
+URxvt.keysym.Control-0:    perl:font-size:reset
+
+!! Moving around with Control+arrow keys
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+
+Xft*dpi: 96
+Xft*antialias: true
+Xft*hinting: full
+
+!URxvt*inheritPixmap: true
+URxvt*.transparent: true
+! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
+URxvt*.shading: 20
