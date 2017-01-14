@@ -203,3 +203,4 @@ exec compton
 #exec conky
 exec polybar example /home/dulnan/dotfiles/.polybar
 exec xrdb -load ~/.Xresources
+exec setxkbmap ch
