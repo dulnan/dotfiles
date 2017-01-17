@@ -8,60 +8,84 @@
 ;=====================================================
 
 [colors]
-background = #00000000
+background = #1b1b1b
 background-alt = #444
-foreground = #dfdfdf
+foreground = #d5c4a1
 foreground-alt = #55
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+yellow = #fabd2f
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 50
+margin-bottom = 0
+
+
+
+
+[bar/dummy]
+width = 100%
+height = 36
+background = #00000000
+foreground = ${colors.foreground}
+font-0 = SFUIDisplay:pixelsize=12:medium;-4
+modules-center = xwindow
+offset-x = 0
+offset-y = 2
+
+override-redirect = true
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
-height = 20
+width = 2560
+height = 36
 offset-x = 0
 offset-y = 0
 
+tray-position = right
+tray-padding = 9
+tray-maxsize = 16
+tray-detached = false
+tray-offset-x = 0
+tray-transparent = false
+tray-background = #ff1b1b1b
+
 ;background = ${xrdb:color9}
-background = ${colors.background}
+background = #ff1b1b1b
 foreground = ${colors.foreground}
 
-overline-size = 2
+overline-size = 0
 overline-color = #f00
 underline-size = 0
-underline-color = #00f
+underline-color = #333
 
 border-bottom = 0
-border-bottom-color = #333
+border-bottom-color = #665c54
 
-spacing = 1
-padding-left = 0
-padding-right = 2
-module-margin-left = 1
+spacing = 0
+padding-left = 9
+padding-right = 9
+module-margin-left = 7
 module-margin-right = 1
 
-font-0 = RobotoMono:pixelsize=12;0
-font-1 = unifont:size=12:heavy:fontformat=truetype;-2
-font-2 = siji:pixelsize=20;0
+font-0 = SFUIDisplay:pixelsize=11:regular;-3
+font-1 = SFUIDisplay:pixelsize=13:heavy;0
+font-2 = FontAwesome:pixelsize=14;-3
+font-3 = unifont:size=10:heavy:fontformat=truetype;-3
+font-4 = SFUIDisplay:pixelsize=10:bold;-5
+; font-2 = FontAwesome:pixelsize=19;0
+; font-3 = SFUIDisplay:pixelsize=24:bold;-5
 
 modules-left = i3
-modules-center = xwindow
-modules-right = backlight volume xkeyboard memory cpu wlan eth battery temperature date powermenu
+;modules-right = backlight volume xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = backlight volume date powermenu
 
-tray-position = right
-tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
 
 ;wm-restack = bspwm
 wm-restack = i3
 
-;override-redirect = true
+override-redirect = false
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -127,24 +151,47 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
-label-mode-padding = 2
+ws-icon-0 = 1;❶
+ws-icon-1 = 2;❷
+ws-icon-2 = 3;❸
+ws-icon-3 = 4;❹
+ws-icon-4 = 5;❺
+ws-icon-5 = 6;❻
+ws-icon-6 = 7;❼
+ws-icon-7 = 8;❽
+ws-icon-8 = 9;❾
+
+; ws-icon-0 = 1;➀
+; ws-icon-1 = 2;➁
+; ws-icon-2 = 3;➂
+; ws-icon-3 = 4;➃
+; ws-icon-4 = 5;➄
+; ws-icon-5 = 6;➅
+; ws-icon-6 = 7;➆
+; ws-icon-7 = 8;➇
+; ws-icon-8 = 9;➈
+
+label-mode-padding = 0
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
-label-focused = A %index%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
+label-focused = ●
+label-focused-underline= #333
+label-focused-padding = 2
+label-focused-font = 2
+label-focused-foreground = ${colors.yellow}
 
-label-unfocused = B %index%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+label-unfocused = ○
+label-unfocused-padding = 2
+label-unfocused-foreground = #33ebdbb2
+label-unfocused-font = 2
 
 label-urgent = %index%!
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
 label-visible = %index%
-label-visible-background = ${self.label-focused-background}
+label-visible-background = #ff00ff
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
@@ -170,38 +217,21 @@ icon-repeat = 
 toggle-on-foreground = ${colors.primary}
 toggle-off-foreground = #66
 
-[module/backlight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = │
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
-label = %percentage%
+label = "  %percentage%"
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
-label = %percentage_used%
+label = "  %percentage_used%"
 
 [module/wlan]
 type = internal/network
@@ -229,9 +259,9 @@ interface = enp9s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = " "
 format-connected-foreground-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+label-connected = "  %local_ip%"
 
 format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname% disconnected
@@ -247,31 +277,31 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
-label = %date% %time%
+label = "  %date% %time%"
 
 [module/volume]
 type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume = "   "
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
+format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted = "  sound muted"
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-foreground-0 = ${colors.yellow}
+bar-volume-foreground-1 = ${colors.yellow}
+bar-volume-foreground-2 = ${colors.yellow}
+bar-volume-foreground-3 = ${colors.yellow}
+bar-volume-foreground-4 = ${colors.yellow}
+bar-volume-foreground-5 = ${colors.yellow}
+bar-volume-foreground-6 = ${colors.yellow}
 bar-volume-gradient = false
 bar-volume-indicator = │
 bar-volume-indicator-font = 2
@@ -282,32 +312,6 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
@@ -323,17 +327,17 @@ label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
 type = custom/menu
 
-label-open =  power
+label-open =    POWER
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close =    cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}

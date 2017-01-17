@@ -4,58 +4,47 @@ set $scripts /home/dulnan/.config/i3/scripts
 
 
 
-set $bg-color            #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
-
+set $bg-color            			#1d2021
+set $inactive-bg-color   			#1b1b1b
+set $text-color          			#f3f4f5
+set $inactive-text-color 			#676E7D
+set $urgent-bg-color     			#E53935
+set $border-focus				 			#665c54
+set $border-focus-indicator		#7c6f64
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 12
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# This font is widely installed, provides lots of unicode glyphs, right- to-left
 # text rendering and scalability o n retina/hidpi displays (thanks to pango).
 font pango: RobotoMono SemiBold 11
 
 # window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+#                       border              background         text                 indicator									child_border
+client.focused          $border-focus       $bg-color          $text-color          $border-focus-indicator 						$border-focus
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $inactive-bg-color
 
 
-hide_edge_borders both
 
-#bar {
-#        status_command i3status
-        
-#        i3bar_command /usr/bin/i3bar
-#        #status_command exec $scripts/i3barconky
-        
-#        position top
-#        colors {
-#            background          "#282828§"
-#            statusline          "#ecedee"
-#            separator           "#242c33"
-#            focused_workspace   "#242c33" "#C64742" "#CACACA"
-#            active_workspace    "#242c33" "#242c33" "#797979" 
-#            inactive_workspace  "#242c33" "#242c33" "#CACACA"
-#            urgent_workspace    "#242c33" "#242c33" "#ff9d17" #"#f3ea0c"
-#        }
+bar {
+	status_command polybar example
+	mode invisible
+	position top
+	tray_output none
+}
 
-#}
+#exec polybar example
 
 
 # Titlebars
-new_window pixel
+new_window pixel 2
 new_float normal
 
-
-gaps inner 20
-gaps outer 20
+gaps inner 32
+gaps outer 0
 
 
 
@@ -72,7 +61,8 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 # bindsym $mod+space exec rofi -show run -lines 3 -eh 2 -width 100 -padding 200 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "#00FF00" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 # bindsym $mod+space exec rofi -show run -width 2560 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "MonacoB 16" -padding 770 -separator-style none -opacity 80
-bindsym $mod+space exec rofi -show combi
+#bindsym $mod+space exec rofi -show combi
+bindsym $mod+space exec rofi -show combi -run-command "/bin/zsh -i -c '{cmd}'" -rnow
 bindsym $mod+l exec lock
 
 
@@ -136,8 +126,6 @@ bindsym $mod+F5 workspace 5
 bindsym $mod+F6 workspace 6
 bindsym $mod+F7 workspace 7
 bindsym $mod+F8 workspace 8
-bindsym $mod+F9 workspace 9
-bindsym $mod+F10 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Control+F1 move container to workspace 1
@@ -148,8 +136,6 @@ bindsym $mod+Control+F5 move container to workspace 5
 bindsym $mod+Control+F6 move container to workspace 6
 bindsym $mod+Control+F7 move container to workspace 7
 bindsym $mod+Control+F8 move container to workspace 8
-bindsym $mod+Control+F9 move container to workspace 9
-bindsym $mod+Control+F10 move container to workspace 10
 
 
 bindsym $mod+Left workspace prev
@@ -196,7 +182,7 @@ bindsym $mod+End exec playerctl next
 bindsym $mod+Home exec playerctl previous
 
 
-exec compton
-exec polybar example --config=/home/dulnan/dotfiles/polybar/config
+exec compton --config ~/dotfiles/compton/.compton.conf
+exec polybar dummy
 exec xrdb -load ~/.Xresources
 exec setxkbmap ch
