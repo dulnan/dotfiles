@@ -43,16 +43,16 @@ height = 36
 offset-x = 0
 offset-y = 0
 
-tray-position = right
-tray-padding = 9
-tray-maxsize = 16
-tray-detached = false
-tray-offset-x = 0
-tray-transparent = false
-tray-background = #ff1b1b1b
+; tray-position = right
+; tray-padding = 9
+; tray-maxsize = 16
+; tray-detached = false
+; tray-offset-x = 0
+; tray-transparent = false
+; tray-background = #ff1b1b1b
 
 ;background = ${xrdb:color9}
-background = #ff1b1b1b
+background = #ff1d2021
 foreground = ${colors.foreground}
 
 overline-size = 0

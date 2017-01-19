@@ -52,9 +52,12 @@ rofi.fake-transparency: false
 rofi.location: 0
 rofi.padding: 700
 rofi.font: RobotoMono 30
+!rofi.font: SFUIDisplay thin 30
 
-rofi.modi:                           combi,calc
-rofi.combi-modi:                     window,run,ssh
+rofi.highlight: bold underline #ff0000
+
+rofi.modi:                           combi
+rofi.combi-modi:                     window,run,ssh,calc
 
 rofi.width: 2560
 rofi.fullscreen: false
