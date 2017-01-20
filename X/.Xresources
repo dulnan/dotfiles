@@ -49,18 +49,18 @@ rofi.columns: 1
 rofi.yoffset: 0
 rofi.opacity: 100
 rofi.fake-transparency: false
-rofi.location: 0
-rofi.padding: 700
-rofi.font: RobotoMono 30
+rofi.location: 1
+rofi.padding: 500
+rofi.font: InputMono light 24
 !rofi.font: SFUIDisplay thin 30
 
-rofi.highlight: bold underline #ff0000
+rofi.width: 2560
 
 rofi.modi:                           combi
 rofi.combi-modi:                     window,run,ssh,calc
 
-rofi.width: 2560
-rofi.fullscreen: false
+
+rofi.fullscreen: true
 
 rofi.fixed-num-lines: true
 
@@ -83,7 +83,7 @@ rofi.color-urgent: argb:0fdf6e3, #dc322f, argb:0eee8d5, argb:0dc322f, #fdf6e3
 ! Mouse cursor stuff
 ! ------------------------------------------------------------------------------
 Xcursor.theme: Adwaita
-Xcursor.size: 20
+Xcursor.size: 18
 
 ! ------------------------------------------------------------------------------
 ! urxvt stuff
@@ -127,11 +127,9 @@ URxvt.color250: #d5c4a1
 
 
 !! Font settings
-!! URxvt.font: xft:RobotoMono:size=13, xft:Hack for Powerline
-URxvt.font:     xft:Roboto Mono for Powerline:style=Regular:size=12:antialias=true
-URxvt.boldFont:     xft:Roboto Mono for Powerline:style=Bold:size=12:antialias=true
-!! URxvt.boldFont: xft:Hack:bold:size=10:antialias=true
-URxvt.letterSpace: -1
+URxvt.font:     		xft:Input Mono:style=Regular:size=12:antialias=true
+URxvt.boldFont:     xft:Input Mono:style=Medium:size=12:antialias=true
+URxvt.letterSpace: 	-1
 
 !! Load perl extentions
 URxvt.perl-ext-common: default,matcher,font-size
@@ -151,9 +149,13 @@ URxvt.keysym.Control-Down: \033[1;5B
 URxvt.keysym.Control-Left: \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
 
-Xft*dpi: 96
-Xft*antialias: true
-Xft*hinting: full
+
+ Xft.autohint: 0
+ Xft.lcdfilter: lcddefault
+ Xft.hintstyle: hintnone
+ Xft.hinting: 1
+ Xft.antialias: 1
+ Xft.rgba: rgb
 
 !URxvt*inheritPixmap: true
 URxvt*.transparent: false
