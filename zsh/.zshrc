@@ -1,6 +1,6 @@
 export PATH=/home/dulnan/bin:$PATH
 
-export VISUAL=micro
+export VISUAL=vim
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -15,6 +15,13 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+zstyle ':completion:*' menu select
+setopt COMPLETE_ALIASES
+
+
+autoload -Uz promptinit
+promptinit
+
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -26,15 +33,20 @@ ZSH=/usr/share/oh-my-zsh/
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-ZSH_THEME="agnoster"
-
+# ZSH_THEME="wezm"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status root_indicator  time)
+POWERLEVEL9K_CONTEXT_TEMPLATE="%"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
-
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 
@@ -70,7 +82,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git archlinux composer fasd npm sudo systemd vagrant web-search wd)
 
 
 # User configuration
@@ -102,10 +114,19 @@ plugins=(git)
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nautilus="gtk3-nocsd nautilus"
+alias chromium="gtk3-nocsd chromium --force-device-scale-factor=2.0"
+alias spotify="spotify --force-device-scale-factor=1"
+alias ls="ls -la"
 
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+  exec startx
+fi
+
 source $ZSH/oh-my-zsh.sh
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
