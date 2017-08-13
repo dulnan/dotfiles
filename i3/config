@@ -9,7 +9,7 @@ set $inactive-bg-color   			#1b1b1b
 set $text-color          			#f3f4f5
 set $inactive-text-color 			#676E7D
 set $urgent-bg-color     			#E53935
-set $border-focus				 			#665c54
+set $border-focus				 			#bdae93
 set $border-focus-indicator		#7c6f64
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -44,9 +44,10 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 new_window pixel 2
 new_float normal
 
-gaps inner 32
-gaps outer 0
+gaps inner 10
+gaps outer 10
 
+#smart_gaps on
 
 
 
@@ -64,7 +65,7 @@ bindsym $mod+q kill
 # bindsym $mod+space exec rofi -show run -width 2560 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "MonacoB 16" -padding 770 -separator-style none -opacity 80
 #bindsym $mod+space exec rofi -show combi
 bindsym $mod+space exec rofi -show combi -run-command "/bin/zsh -i -c '{cmd}'" -rnow
-bindsym $mod+l exec lock
+# bindsym $mod+l exec lock
 
 
 
@@ -76,33 +77,33 @@ bindsym $mod+l exec lock
 
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Mod1+Left focus left
-bindsym $mod+Mod1+Right focus right
-bindsym $mod+Mod1+Up focus up
-bindsym $mod+Mod1+Down focus down
+bindsym $mod+Mod1+h focus left
+bindsym $mod+Mod1+l focus right
+bindsym $mod+Mod1+k focus up
+bindsym $mod+Mod1+j focus down
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Control+Left move left
-bindsym $mod+Control+Right move right
-bindsym $mod+Control+Up move up
-bindsym $mod+Control+Down move down
+bindsym $mod+Control+h move left
+bindsym $mod+Control+l move right
+bindsym $mod+Control+k move up
+bindsym $mod+Control+j move down
 
 
 # same bindings, but for the arrow keys
-bindsym $mod+Shift+Left resize shrink width 10 px or 10 ppt
-bindsym $mod+Shift+Right resize grow width 10 px or 10 ppt
-bindsym $mod+Shift+Up resize shrink height 10 px or 10 ppt
-bindsym $mod+Shift+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+h resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+l resize grow width 10 px or 10 ppt
+bindsym $mod+Shift+k resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+j resize grow height 10 px or 10 ppt
 
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
-bindsym $mod+minus fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -118,29 +119,58 @@ bindsym $mod+Shift+space floating toggle
 # focus the child container
 #bindsym $mod+d focus child
 
+
+workspace 1 output DVI-I-1
+workspace 2 output DVI-I-1
+workspace 3 output DVI-I-1
+workspace 4 output DVI-I-1
+workspace 5 output DVI-I-1
+workspace 6 output DVI-I-1
+workspace 7 output DVI-I-1
+workspace 8 output DVI-I-1
+
+workspace 21 output DP-2
+workspace 22 output DP-2
+workspace 23 output DP-2
+workspace 24 output DP-2
+workspace 25 output DP-2
+workspace 26 output DP-2
+workspace 27 output DP-2
+workspace 28 output DP-2
+
+workspace 31 output DP-4
+workspace 32 output DP-4
+workspace 33 output DP-4
+workspace 34 output DP-4
+workspace 35 output DP-4
+workspace 36 output DP-4
+workspace 37 output DP-4
+workspace 38 output DP-4
+
+
 # switch to workspace
-bindsym $mod+F1 workspace 1
-bindsym $mod+F2 workspace 2
-bindsym $mod+F3 workspace 3
-bindsym $mod+F4 workspace 4
-bindsym $mod+F5 workspace 5
-bindsym $mod+F6 workspace 6
-bindsym $mod+F7 workspace 7
-bindsym $mod+F8 workspace 8
+bindsym $mod+1 exec ~/.config/i3/scripts/i3switchworkspace focus 1
+bindsym $mod+2 exec ~/.config/i3/scripts/i3switchworkspace focus 2
+bindsym $mod+3 exec ~/.config/i3/scripts/i3switchworkspace focus 3
+bindsym $mod+4 exec ~/.config/i3/scripts/i3switchworkspace focus 4
+bindsym $mod+5 exec ~/.config/i3/scripts/i3switchworkspace focus 5
+bindsym $mod+6 exec ~/.config/i3/scripts/i3switchworkspace focus 6
+bindsym $mod+7 exec ~/.config/i3/scripts/i3switchworkspace focus 7
+bindsym $mod+8 exec ~/.config/i3/scripts/i3switchworkspace focus 8
 
 # move focused container to workspace
-bindsym $mod+Control+F1 move container to workspace 1
-bindsym $mod+Control+F2 move container to workspace 2
-bindsym $mod+Control+F3 move container to workspace 3
-bindsym $mod+Control+F4 move container to workspace 4
-bindsym $mod+Control+F5 move container to workspace 5
-bindsym $mod+Control+F6 move container to workspace 6
-bindsym $mod+Control+F7 move container to workspace 7
-bindsym $mod+Control+F8 move container to workspace 8
+bindsym $mod+Control+1 exec ~/.config/i3/scripts/i3switchworkspace move 1
+bindsym $mod+Control+2 exec ~/.config/i3/scripts/i3switchworkspace move 2
+bindsym $mod+Control+3 exec ~/.config/i3/scripts/i3switchworkspace move 3
+bindsym $mod+Control+4 exec ~/.config/i3/scripts/i3switchworkspace move 4
+bindsym $mod+Control+5 exec ~/.config/i3/scripts/i3switchworkspace move 5
+bindsym $mod+Control+6 exec ~/.config/i3/scripts/i3switchworkspace move 6
+bindsym $mod+Control+7 exec ~/.config/i3/scripts/i3switchworkspace move 7
+bindsym $mod+Control+8 exec ~/.config/i3/scripts/i3switchworkspace move 8
 
 
-bindsym $mod+Left workspace prev
-bindsym $mod+Right workspace next
+bindsym $mod+h workspace prev_on_output
+bindsym $mod+l workspace next_on_output
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -177,13 +207,16 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 bindsym XF86Launch5 exec lock
 bindsym XF86Launch6 exec playerctl play-pause
-bindsym XF86Tools exec maim --hidecursor -s --format png ~/images/screenshots/$(date +%F-%T).png
-bindsym Ctrl+XF86Tools exec maim --hidecursor -s --format png /dev/stdout | copyq write image/png -
+bindsym XF86Tools exec maim --hidecursor -s --format=png ~/images/screenshots/$(date +%F-%T).png
+bindsym Ctrl+XF86Tools exec maim --hidecursor -s --format=png /dev/stdout | copyq write image/png -
 bindsym $mod+End exec playerctl next
 bindsym $mod+Home exec playerctl previous
 
-exec polybar example
-exec polybar dummy
-exec compton --config ~/dotfiles/compton/.compton.conf
-exec xrdb -load ~/.Xresources
-exec setxkbmap ch
+exec --no-startup-id xrdb -load ~/.Xresources
+exec --no-startup-id compton --config ~/dotfiles/compton/.compton.conf
+exec --no-startup-id polybar left
+exec --no-startup-id polybar middle
+exec --no-startup-id polybar right
+exec --no-startup-id setxkbmap ch
+exec --no-startup-id copyq
+exec --no-startup-id nitrogen --restore
