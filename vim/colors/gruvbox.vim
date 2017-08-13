@@ -1,0 +1,1 @@
+/home/dulnan/.vim/plugins/plugged/gruvbox/colors/gruvbox.vim
