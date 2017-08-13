@@ -1,0 +1,37 @@
+# Move window
+cmd + ctrl - left              :   kwmc window -s west
+cmd + ctrl - right             :   kwmc window -s east
+cmd + ctrl - up                :   kwmc window -s north
+cmd + ctrl - down              :   kwmc window -s south
+
+# resize window
+cmd + shift - left              :   kwmc window -c expand 0.05 west && kwmc window -c expand 0.05 east
+cmd + shift - right             :   kwmc window -c reduce 0.05 west && kwmc window -c reduce 0.05 east
+cmd + shift - up                :   kwmc window -c expand 0.05 north && kwmc window -c expand 0.05 south
+cmd + shift - down              :   kwmc window -c reduce 0.05 north && kwmc window -c reduce 0.05 south
+
+# focus window
+cmd + alt - left                :   kwmc window -f west
+cmd + alt - right               :   kwmc window -f east
+cmd + alt - up                  :   kwmc window -f north
+cmd + alt - down                :   kwmc window -f south
+
+# move window to next display (0x2F = . )
+cmd + ctrl - 0x2F               :   kwmc window -m display next
+
+# make window fullscreen
+cmd + ctrl - f                  :   kwmc window -z fullscreen
+
+# switch spaces
+cmd - left                      :   kwmc space -fExperimental left
+cmd - right                     :   kwmc space -fExperimental right
+
+# make window floatable
+cmd + ctrl + alt - f            :   kwmc window -t focused
+
+# set vertical or horizontal tiling
+cmd + ctrl + alt - v            :   kwmc display -c vertical
+cmd + ctrl + alt - h            :   kwmc display -c horizontal
+
+cmd + shift + alt - r            :   brew services restart kwm
+cmd + shift + alt - s            :   kwmc window -c split-mode toggle
