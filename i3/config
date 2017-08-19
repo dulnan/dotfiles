@@ -41,11 +41,11 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 
 # Titlebars
-new_window pixel 2
+new_window pixel 3
 new_float normal
 
-gaps inner 10
-gaps outer 10
+gaps inner 0
+gaps outer 0
 
 #smart_gaps on
 
@@ -77,10 +77,10 @@ bindsym $mod+space exec rofi -show combi -run-command "/bin/zsh -i -c '{cmd}'" -
 
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Mod1+h focus left
-bindsym $mod+Mod1+l focus right
-bindsym $mod+Mod1+k focus up
-bindsym $mod+Mod1+j focus down
+bindsym $mod+Shift+h focus left
+bindsym $mod+Shift+l focus right
+bindsym $mod+Shift+k focus up
+bindsym $mod+Shift+j focus down
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Control+h move left
@@ -90,10 +90,10 @@ bindsym $mod+Control+j move down
 
 
 # same bindings, but for the arrow keys
-bindsym $mod+Shift+h resize shrink width 10 px or 10 ppt
-bindsym $mod+Shift+l resize grow width 10 px or 10 ppt
-bindsym $mod+Shift+k resize shrink height 10 px or 10 ppt
-bindsym $mod+Shift+j resize grow height 10 px or 10 ppt
+bindsym $mod+Mod1+h resize shrink width 3 px or 3 ppt
+bindsym $mod+Mod1+l resize grow width 3 px or 3 ppt
+bindsym $mod+Mod1+k resize shrink height 3 px or 3 ppt
+bindsym $mod+Mod1+j resize grow height 3 px or 3 ppt
 
 
 # split in horizontal orientation
