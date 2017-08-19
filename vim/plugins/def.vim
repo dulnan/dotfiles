@@ -33,11 +33,13 @@ Plug 'cakebaker/scss-syntax.vim',                 { 'commit' : '4461789d02f81fd3
 Plug 'othree/html5.vim',                          { 'commit' : 'bc7faabe7a4dfc0d963d6d8a406c3b7284e2866f'}
 Plug 'Valloric/YouCompleteMe',                    { 'commit' : 'ddf18cc6ec3bb0108bb89ac366fd74394815f2c6', 'do': function('InstallYCM') }
 Plug 'moll/vim-node',                             { 'commit' : '13b31218447335e176d46dd5f497b274f7f49595'}
-Plug 'syngan/vim-vimlint',                        { 'commit' : 'c8b9cd9d8a0fb6dc69667d32819aeef503cff55c'}
+"Plug 'syngan/vim-vimlint',                        { 'commit' : 'c8b9cd9d8a0fb6dc69667d32819aeef503cff55c'}
 Plug 'ynkdir/vim-vimlparser',                     { 'commit' : '2fff43c58968a18bc01bc8304df68bde01af04d9'}
 Plug 'mattn/emmet-vim',                           { 'commit' : '5b217264dde398699849a0211bbe1a917d8b2f7a'}
 Plug 'morhetz/gruvbox'
 
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'posva/vim-vue'
 call plug#end()
+
 

@@ -1,5 +1,7 @@
 export PATH=/home/dulnan/bin:$PATH
+export PATH=/home/go/bin:$PATH
 
+source /home/dulnan/.bash_profile
 export VISUAL=vim
 
 # Lines configured by zsh-newuser-install
@@ -114,7 +116,7 @@ plugins=(git archlinux composer fasd npm sudo systemd vagrant web-search wd)
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nautilus="gtk3-nocsd nautilus"
-alias chromium="gtk3-nocsd chromium --force-device-scale-factor=2.0"
+alias chromium="gtk3-nocsd chromium --force-device-scale-factor=1.5"
 alias spotify="spotify --force-device-scale-factor=1"
 alias ls="ls -la"
 
@@ -128,5 +130,29 @@ if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-
+source /usr/share/nvm/init-nvm.sh
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+echo source ~/.bash_profile >>  ~/.zshrc
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
+source /home/dulnan/.bash_profile
