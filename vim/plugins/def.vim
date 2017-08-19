@@ -38,6 +38,8 @@ Plug 'ynkdir/vim-vimlparser',                     { 'commit' : '2fff43c58968a18b
 Plug 'mattn/emmet-vim',                           { 'commit' : '5b217264dde398699849a0211bbe1a917d8b2f7a'}
 Plug 'morhetz/gruvbox'
 
+Plug 'ayu-theme/ayu-vim'
+Plug 'posva/vim-vue'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 

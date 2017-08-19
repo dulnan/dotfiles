@@ -12,12 +12,15 @@ set wrap
 " show line numbers
 set number
 
+set termguicolors
+
 " syntax highlighting
 syntax on
 set background=dark
 set t_Co=256
-colorscheme gruvbox
+colorscheme ayu
 
+let ayucolor="dark"
 
 "indent
 set smartindent
