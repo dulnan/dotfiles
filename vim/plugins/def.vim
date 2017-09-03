@@ -38,6 +38,7 @@ Plug 'Valloric/YouCompleteMe',                    { 'commit' : 'ddf18cc6ec3bb010
 "Plug 'mattn/emmet-vim',                           { 'commit' : '5b217264dde398699849a0211bbe1a917d8b2f7a'}
 "Plug 'morhetz/gruvbox'
 Plug 'fcpg/vim-fahrenheit'
+Plug 'ayu-theme/ayu-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'posva/vim-vue'
