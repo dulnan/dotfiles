@@ -7,10 +7,10 @@
 "
 
 
-
 " You won't find any configuration here directly,
-" please look at files under the config folder for global config
+
 " and under plugins for plugins configuration
+" please look at files under the config folder for global config
 
 
 filetype plugin on
@@ -23,66 +23,173 @@ let s:pluginDir  = g:vimDir.'/plugins/plugged'
 let s:pluginDef  = g:vimDir.'/plugins/def.vim'
 let s:pluginConf = g:vimDir.'/plugins/config.vim'
 
-let s:configSetting = g:vimDir.'/config/setting.vim'
-let s:configMapping = g:vimDir.'/config/mapping.vim'
-let s:configAbbrev  = g:vimDir.'/config/abbrev.vim'
-let s:configAutocmd  = g:vimDir.'/config/autocmd.vim'
 
-let s:userConfig  = g:vimDir.'/local.vim'
+" Loads the global config, mapping and settings
+"
+" WebVim Configuration : global settings
+"
+" author: Bertrand Chevrier <chevrier.bertrand@gmail.com>
+" source: https://github.com/krampstudio/dotvim
+" year  : 2015
+"
 
-if !isdirectory(s:pluginDir)
+" wrap end of lin
+set wrap
 
-    " Welcome message when plugins are not yet installed
+" show line numbers
+set number
 
-    echom " "
-    echom "Welcome to WebVim"
-    echom " > the vim IDE for web dev <"
-    echom " "
-    echom "Checking dependencies :"
-    if (!executable('node') && !executable('nodejs')) || !executable('npm')
-        echom " [ERR] node.js and npm are required, please install them before continuing."
-    	echom " "
-    else
+" syntax highlighting
+syntax on
+set background=dark
+set t_Co=256
+let g:vue_disable_pre_processors=1
+"set termguicolors
+"colorscheme fahrenheit 
+colorscheme spacegray 
+let g:airline_theme='fahrenheit'
+let ayucolor="mirage"
+"indent
+set smartindent
+set autoindent
+set copyindent
+set shiftwidth=2
+set shiftround
+set backspace=indent,eol,start
+set smarttab
+set expandtab
+set tabstop=2
+"search
+set showmatch
+set smartcase
 
-        echom "  - nodejs   : ok"
-        echom "  - npm      : ok"
-        echom "  - eslint   : " . (executable('eslint')   ? "ok" : "no (optional)")
-        echom "  - jsonlint : " . (executable('jsonlint') ? "ok" : "no (optional)")
-        echom "  - csslint  : " . (executable('csslint')  ? "ok" : "no (optional)")
-        echom " done."
-
-        echom " "
-        echom "We are going to install the plugins : "
-        echom " 1. take a coffee"
-        echom " 2. reload vim"
-        echom " 3. Envoy WebVim"
-        echom " "
-        echom "Please note if you want to have the arrows keys and <esc>, disable the 'hardcoreMode' in the vimrc"
-        echom " "
-
-        exec ":source ".s:pluginDef
-
-	"Install plugins on first run
-	autocmd VimEnter * PlugInstall
-    endif
-
-else
-
-    " Loads the global config, mapping and settings
-    exec ":source ".s:configSetting
-    exec ":source ".s:configMapping
-    exec ":source ".s:configAbbrev
-    exec ":source ".s:configAutocmd
-
-    " Loads plugins def and config
-    exec ":source ".s:pluginDef
-    exec ":source ".s:pluginConf
+set hlsearch
+set incsearch
 
 
-    " user configuration
-    if filereadable(s:userConfig)
-       exec ":source ".s:userConfig
-    endif
+" copy/paste
+"set paste
+set clipboard=unnamedplus
 
+" folding manual
+set foldmethod=manual
+
+" mouse
+set mouse=a
+
+" spell check, to be activated manually
+set spelllang=en_us
+set nospell
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+
+"
+" WebVim Configuration : global mapping
+"
+" author: Bertrand Chevrier <chevrier.bertrand@gmail.com>
+"
+
+" leader
+let g:mapleader = ","
+let g:localmapleader = "\\"
+
+" move the current line below
+nnoremap <M-j> ddp
+
+" move the current line above
+nnoremap <M-k> ddkP
+
+" switch tab
+nnoremap <S-right> :tabn<CR>
+nnoremap <S-left> :tabp<CR>
+
+" insert mode uppercase the current word
+"  <esc> : go to normal mode
+"  v    : visual mode
+"  iw    : select the current word
+"  U    : uppercase selection
+"  i    : back to insert mode
+inoremap <c-u> <esc>viwUi
+
+" remove last search highlight
+nnoremap <C-l> :nohlsearch<CR><C-l>
+
+" Wrap a word in double quotes
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
+" Wrap a word in single quotes
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+
+" select inside parents
+onoremap in( :<c-u>normal! f(vi(<cr>
+
+" select inside braces
+onoremap in{ :<c-u>normal! f{vi{<cr>
+
+" select inside brackets
+onoremap in[ :<c-u>normal! f[vi[<cr>
+
+" Open MYVIMRC in a vsplit
+nnoremap <leader>ev :split $MYVIMRC<cr>
+
+" Source MYVIMRC
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+
+if g:hardcoreMode == 1
+
+    " Leave insert mode (like <esc>) and disable <esc>
+    inoremap jk <esc>
+    inoremap <special> <esc> <nop>
+    inoremap <esc>^[ <esc>^[
+
+    " Disable arrow keys
+
+    nnoremap <up> <nop>
+    nnoremap <down> <nop>
+    nnoremap <left> <nop>
+    nnoremap <right> <nop>
+
+    inoremap <up> <nop>
+    inoremap <down> <nop>
+    inoremap <left> <nop>
+    inoremap <right> <nop>
 endif
 
+
+
+"
+" WebVim Configuration : autocommands
+"
+" author: Bertrand Chevrier <chevrier.bertrand@gmail.com>
+" source: https://github.com/krampstudio/dotvim
+" year  : 2015
+"
+
+
+" Force filetype
+
+autocmd BufRead,BufNewFile .eslintrc setfiletype json
+autocmd BufRead,BufNewFile .jshintrc setfiletype json
+
+
+" Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+
+
+" Loads plugins def and config
+exec ":source ".s:pluginDef
+exec ":source ".s:pluginConf
