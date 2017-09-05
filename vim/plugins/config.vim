@@ -9,55 +9,6 @@
 " TODO split by plugin ?
 
 
-" [> NERDTree <]
-
-" on vim enter opens nerd tree
-function! OpenNerdTree()
-    let s:exclude = ['COMMIT_EDITMSG', 'MERGE_MSG']
-    if index(s:exclude, expand('%:t')) < 0
-        NERDTreeFind
-        exec "normal! \<c-w>\<c-w>"
-    endif
-endfunction
-autocmd VimEnter * call OpenNerdTree()
-
-
-" nerdtree window resize
-let g:NERDTreeWinSize = 35
-
-" show hidden files
-let g:NERDTreeShowHidden=1
-
-" single click to open nodes
-" let g:NERDTreeMouseMode=3
-
-" ignored files
-let g:NERDTreeIgnore=['\.swp$', '\~$']
-nnoremap <c-n> :NERDTreeToggle<cr>
-
-" helps quiting when there's no buffers left but NerdTree
-function! CheckLeftBuffers()
-  if tabpagenr('$') == 1
-    let i = 1
-    while i <= winnr('$')
-      if getbufvar(winbufnr(i), '&buftype') == 'help' ||
-          \ getbufvar(winbufnr(i), '&buftype') == 'quickfix' ||
-          \ exists('t:NERDTreeBufName') &&
-          \   bufname(winbufnr(i)) == t:NERDTreeBufName ||
-          \ bufname(winbufnr(i)) == '__Tag_List__'
-        let i += 1
-      else
-        break
-      endif
-    endwhile
-    if i == winnr('$') + 1
-      qall
-    endif
-    unlet i
-  endif
-endfunction
-autocmd BufEnter * call CheckLeftBuffers()
-
 
 " [> NERDCommenter <]
 
@@ -73,8 +24,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 "  powerline font
 let g:airline_powerline_fonts=1
-
-let g:airline_theme='PaperColor'
 
 " [> EditorConfig <]
 

@@ -7,64 +7,89 @@
 ! -----------------------------------------------------------------------------
 
 ! hard contrast: *background: #1d2021
-#define _background #282828
+!#define _background #282828
 
-! soft contrast: *background: #32302f
-#define _foreground #ebdbb2
+!! soft contrast: *background: #32302f
+!#define _foreground #ebdbb2
 
-! Black + DarkGrey
-#define _color0 #282828
-#define _color8 #928374
+!! Black + DarkGrey
+!#define _color0 #282828
+!#define _color8 #928374
 
-! DarkRed + Red
-#define _color1 #cc241d
-#define _color9 #fb4934
+!! DarkRed + Red
+!#define _color1 #cc241d
+!#define _color9 #fb4934
 
-! DarkGreen + Green
-#define _color2 #98971a
-#define _color10 #b8bb26
+!! DarkGreen + Green
+!#define _color2 #98971a
+!#define _color10 #b8bb26
 
-! DarkYellow + Yellow
-#define _color3 #d79921
-#define _color11 #fabd2f
+!! DarkYellow + Yellow
+!#define _color3 #d79921
+!#define _color11 #fabd2f
 
-! DarkBlue + Blue
-#define _color4 #458588
-#define _color12 #83a598
+!! DarkBlue + Blue
+!#define _color4 #458588
+!#define _color12 #83a598
 
-! DarkMagenta + Magenta
-#define _color5 #b16286
-#define _color13 #d3869b
+!! DarkMagenta + Magenta
+!#define _color5 #b16286
+!#define _color13 #d3869b
 
-! DarkCyan + Cyan
-#define _color6 #689d6a
-#define _color14 #8ec07c
+!! DarkCyan + Cyan
+!#define _color6 #689d6a
+!#define _color14 #8ec07c
 
-! LightGrey + White
-#define _color7 #a89984
-#define _color15 #ebdbb2
+!! LightGrey + White
+!#define _color7 #a89984
+!#define _color15 #ebdbb2
 
-*background: _background
-*foreground: _foreground
-*color0: _color0
-*color8: _color8
-*color1: _color1
-*color9: _color9
-*color2: _color2
-*color10: _color10
-*color3: _color3
-*color11: _color11
-*color4: _color4
-*color12: _color12
-*color5: _color5
-*color13: _color13
-*color6: _color6
-*color14: _color14
-*color7: _color7
-*color15: _color15
+!*background: _background
+!*foreground: _foreground
+!*color0: _color0
+!*color8: _color8
+!*color1: _color1
+!*color9: _color9
+!*color2: _color2
+!*color10: _color10
+!*color3: _color3
+!*color11: _color11
+!*color4: _color4
+!*color12: _color12
+!*color5: _color5
+!*color13: _color13
+!*color6: _color6
+!*color14: _color14
+!*color7: _color7
+!*color15: _color15
 
 
-
+background: #111314
+*foreground: #B7BBB7
+! black
+*color0: #2C2F33
+*color8: #4B5056
+! red
+*color1: #B04C50
+*color9: #B04C50
+! green
+*color2: #919652
+*color10: #94985B
+! yellow
+*color3: #E2995C
+*color11: #E2995C
+! blue
+*color4: #66899D
+*color12: #66899D
+! magenta
+*color5: #8D6494
+*color13: #8D6494
+! cyan
+*color6: #527C77
+*color14: #527C77
+! white
+*color7: #606360
+*color15: #DDE3DC
 
 
 
@@ -127,8 +152,8 @@ URxvt.internalBorder: 8
 URxvt.intensityStyles: true
 
 !! Font settings
-URxvt.font:     		xft:Input Mono:style=Regular:size=13:antialias=true
-URxvt.boldFont:     xft:Input Mono:style=Bold:size=13:antialias=true
+URxvt.font:     		xft:Input Mono Narrow:style=Regular:size=14:antialias=true
+URxvt.boldFont:     xft:Input Mono Narrow:style=Bold:size=14:antialias=true
 URxvt.letterSpace: 	-1
 
 !! Load perl extentions
@@ -167,8 +192,8 @@ URxvt.keysym.C-slash:  font-size:show
 Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight 
+Xft.lcdfilter: lcddefaul hintslightt
 Xft.dpi:      96
 ! }}}
 
@@ -176,10 +201,10 @@ Xft.dpi:      96
 !URxvt*inheritPixmap: true
 URxvt*.transparent: false
 ! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
-URxvt*.shading: 20
+!URxvt*.shading: 0
 
-! URxvt.background: #1b1b1b
-URxvt.background: rgba:1b00/1b00/1b00/eeee
+URxvt.background: #111314
+!URxvt.background: rgba:1b00/1b00/1b00/eeee
 
 
 
