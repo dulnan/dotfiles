@@ -19,6 +19,7 @@ let g:vimDir = $HOME.'/.vim'
 
 let g:hardcoreMode = 1
 
+nnoremap <C-w>v :vnew<CR>
 let s:pluginDir  = g:vimDir.'/plugins/plugged'
 let s:pluginDef  = g:vimDir.'/plugins/def.vim'
 let s:pluginConf = g:vimDir.'/plugins/config.vim'
