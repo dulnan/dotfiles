@@ -120,6 +120,7 @@ alias chromium="gtk3-nocsd chromium --force-device-scale-factor=1.5"
 alias spotify="spotify --force-device-scale-factor=1"
 alias ls="ls -la"
 
+alias vim='mvim -v'
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
