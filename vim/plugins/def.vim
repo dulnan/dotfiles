@@ -42,6 +42,7 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'posva/vim-vue'
+Plug 'evidens/vim-twig'
 call plug#end()
 
 
