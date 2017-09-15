@@ -25,6 +25,10 @@ let s:pluginDef  = g:vimDir.'/plugins/def.vim'
 let s:pluginConf = g:vimDir.'/plugins/config.vim'
 
 
+let g:vdebug_options = {}
+let g:vdebug_options["port"] = 9000
+let g:vdebug_options["server"] = '10.20.1.2' 
+
 " Loads the global config, mapping and settings
 "
 " WebVim Configuration : global settings
@@ -50,6 +54,13 @@ let g:vue_disable_pre_processors=1
 colorscheme spacegray 
 let g:airline_theme='fahrenheit'
 let ayucolor="mirage"
+
+
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
 "indent
 set smartindent
 set autoindent
@@ -67,6 +78,8 @@ set smartcase
 set hlsearch
 set incsearch
 
+set timeoutlen=1000
+set ttimeoutlen=0
 
 " copy/paste
 "set paste
@@ -82,6 +95,13 @@ set mouse=a
 set spelllang=en_us
 set nospell
 
+au BufReadPost *.theme set syntax=php
+au BufReadPost *.module set syntax=php
+let g:jsdoc_enable_es6=1
+let g:used_javascript_libs = 'jquery,underscore,vue,handlebars'
+
+let g:javascript_plugin_jsdoc = 1
+
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -93,6 +113,9 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 
+let g:indent_guides_enable_on_vim_startup = 1
+
+nmap <F13> :TagbarToggle<CR>
 "
 " WebVim Configuration : global mapping
 "
@@ -181,7 +204,7 @@ endif
 
 autocmd BufRead,BufNewFile .eslintrc setfiletype json
 autocmd BufRead,BufNewFile .jshintrc setfiletype json
-
+autocmd FileType vue syntax sync fromstart
 
 " Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving

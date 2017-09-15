@@ -116,7 +116,7 @@ let g:easy_align_ignore_groups = ['Comment']
 
 " [> multiple cursor <]
 
-let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_use_default_mapping=-2
 let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
