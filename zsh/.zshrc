@@ -1,7 +1,15 @@
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='macos'
+fi
+
 export PATH=/home/dulnan/bin:$PATH
 export PATH=/home/go/bin:$PATH
 
-source /home/dulnan/.bash_profile
+source ~/.bash_profile
 export VISUAL=vim
 
 # Lines configured by zsh-newuser-install
@@ -120,6 +128,7 @@ alias chromium="gtk3-nocsd chromium --force-device-scale-factor=1.45"
 alias spotify="spotify --force-device-scale-factor=1"
 alias ls="ls -la"
 
+alias vim='mvim -v'
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
@@ -130,6 +139,9 @@ if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-source /usr/share/nvm/init-nvm.sh
+
+if [[ $platform == 'linux' ]]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
+
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-source /home/dulnan/.bash_profile
