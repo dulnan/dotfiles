@@ -9,7 +9,7 @@ endfunction
 " Start plugins definition
 call plug#begin($HOME.'/.vim/plugins/plugged')
 
-"Plug 'scrooloose/nerdtree',                       { 'commit' : '334fb0e68797cf56d17db42bf56f39030f226cf8' } | Plug 'https://gist.github.com/1f40e70e615f2fa2212bf5423662277d.git', { 'dir' : g:vimDir . '/nerdtree_plugin' }
+Plug 'scrooloose/nerdtree',                       { 'commit' : '334fb0e68797cf56d17db42bf56f39030f226cf8' } | Plug 'https://gist.github.com/1f40e70e615f2fa2212bf5423662277d.git', { 'dir' : g:vimDir . '/nerdtree_plugin' }
 
 Plug 'scrooloose/nerdcommenter',                  { 'commit' : '97cb982f1f0d0631b34b71b065e162916bee4036' }
 "Plug 'goatslacker/mango.vim',                     { 'commit' : '7af1e00e9068d4c1010a05626030eb0bf64365d7' }
@@ -17,7 +17,7 @@ Plug 'bling/vim-airline',                         { 'commit' : '89646038445ccfef
 "Plug 'vim-dist/PaperColor.vim',                   { 'commit' : '9162696192a3c965d1bddef9b8500e5bc3e7c354' }
 "Plug 'tpope/vim-fugitive',                        { 'commit' : 'aac85a268e89a6c8be79341e130ac90256fadbd6' }
 "Plug 'airblade/vim-gitgutter',                    { 'commit' : '297678a08da0c2d1819d6cb98504f8a843395456' }
-"Plug 'editorconfig/editorconfig-vim',             { 'commit' : 'a459b8cfef00100da40fd69c8ae92c4d1e63e1d2' }
+Plug 'editorconfig/editorconfig-vim',             { 'commit' : 'a459b8cfef00100da40fd69c8ae92c4d1e63e1d2' }
 "Plug 'bronson/vim-trailing-whitespace',           { 'commit' : '733fb64337b6da4a51c85a43450cd620d8b617b5' }
 Plug 'scrooloose/syntastic',                      { 'commit' : '6ffba7395c562e152cb84bc8f7906de2b1ed0b8a' }
 "Plug 'junegunn/vim-easy-align',                   { 'commit' : '0cb6b98fc155717b0a56c110551ac57d1d951ddb' }
@@ -51,6 +51,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'shawncplus/phpcomplete.vim'
 call plug#end()
 
 

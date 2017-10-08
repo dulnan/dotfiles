@@ -1,16 +1,3 @@
-"
-" WebVim Configuration entry point
-"
-" author: Bertrand Chevrier <chevrier.bertrand@gmail.com>
-" source: https://github.com/krampstudio/dotvim
-" year  : 2015
-"
-
-
-" You won't find any configuration here directly,
-
-" and under plugins for plugins configuration
-" please look at files under the config folder for global config
 
 
 filetype plugin on
@@ -19,24 +6,18 @@ let g:vimDir = $HOME.'/.vim'
 
 let g:hardcoreMode = 1
 
-nnoremap <C-w>v :vnew<CR>
 let s:pluginDir  = g:vimDir.'/plugins/plugged'
 let s:pluginDef  = g:vimDir.'/plugins/def.vim'
 let s:pluginConf = g:vimDir.'/plugins/config.vim'
 
-
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 9000
-let g:vdebug_options["server"] = '10.20.1.2' 
-
-" Loads the global config, mapping and settings
-"
-" WebVim Configuration : global settings
-"
-" author: Bertrand Chevrier <chevrier.bertrand@gmail.com>
-" source: https://github.com/krampstudio/dotvim
-" year  : 2015
-"
+let g:vdebug_options["server"] = '' 
+"let g:vdebug_options['ide_key'] = 'PHPSTORM'
+" Mapping '/remote/path' : '/local/path'
+let g:vdebug_options['path_maps'] = {
+      \  '/var/www/ch.migros.karriere/web' : '/home/dulnan/Development/ch.migros.karriere/web',
+      \}
 
 " wrap end of lin
 set wrap
@@ -57,9 +38,9 @@ let ayucolor="mirage"
 
 
 
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+"let g:indent_guides_auto_colors = 0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 "indent
 set smartindent
@@ -73,7 +54,7 @@ set expandtab
 set tabstop=2
 "search
 set showmatch
-set smartcase
+set ignorecase 
 
 set hlsearch
 set incsearch
@@ -95,8 +76,6 @@ set mouse=a
 set spelllang=en_us
 set nospell
 
-au BufReadPost *.theme set syntax=php
-au BufReadPost *.module set syntax=php
 let g:jsdoc_enable_es6=1
 let g:used_javascript_libs = 'jquery,underscore,vue,handlebars'
 
@@ -126,6 +105,8 @@ nmap <F13> :TagbarToggle<CR>
 let g:mapleader = ","
 let g:localmapleader = "\\"
 
+map <C-t> :NERDTreeToggle<CR>
+
 " move the current line below
 nnoremap <M-j> ddp
 
@@ -133,7 +114,7 @@ nnoremap <M-j> ddp
 nnoremap <M-k> ddkP
 
 " switch tab
-nnoremap <S-right> :tabn<CR>
+nnoremap <Tab> :tabn<CR>
 nnoremap <S-left> :tabp<CR>
 
 " insert mode uppercase the current word
@@ -168,43 +149,35 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 " Source MYVIMRC
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" Leave insert mode (like <esc>) and disable <esc>
+inoremap jk <esc>
+inoremap <special> <esc> <nop>
+inoremap <esc>^[ <esc>^[
 
-if g:hardcoreMode == 1
+" Disable arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
 
-    " Leave insert mode (like <esc>) and disable <esc>
-    inoremap jk <esc>
-    inoremap <special> <esc> <nop>
-    inoremap <esc>^[ <esc>^[
-
-    " Disable arrow keys
-
-    nnoremap <up> <nop>
-    nnoremap <down> <nop>
-    nnoremap <left> <nop>
-    nnoremap <right> <nop>
-
-    inoremap <up> <nop>
-    inoremap <down> <nop>
-    inoremap <left> <nop>
-    inoremap <right> <nop>
-endif
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 
+nnoremap <C-w>v :vnew<CR>
 
 "
-" WebVim Configuration : autocommands
+" Autocommands 
 "
-" author: Bertrand Chevrier <chevrier.bertrand@gmail.com>
-" source: https://github.com/krampstudio/dotvim
-" year  : 2015
-"
-
 
 " Force filetype
-
 autocmd BufRead,BufNewFile .eslintrc setfiletype json
 autocmd BufRead,BufNewFile .jshintrc setfiletype json
 autocmd FileType vue syntax sync fromstart
+au BufReadPost *.theme set syntax=php
+au BufReadPost *.module set syntax=php
 
 " Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving

@@ -9,7 +9,7 @@ fi
 export PATH=/home/dulnan/bin:$PATH
 export PATH=/home/go/bin:$PATH
 
-source ~/.bash_profile
+#source ~/.bash_profile
 export VISUAL=vim
 
 # Lines configured by zsh-newuser-install
@@ -128,7 +128,7 @@ alias chromium="gtk3-nocsd chromium --force-device-scale-factor=1.45"
 alias spotify="spotify --force-device-scale-factor=1"
 alias ls="ls -la"
 
-alias vim='mvim -v'
+alias vim='nvim'
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
@@ -145,3 +145,5 @@ if [[ $platform == 'linux' ]]; then
 fi
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

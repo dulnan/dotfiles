@@ -220,3 +220,4 @@ exec --no-startup-id polybar right
 exec --no-startup-id setxkbmap ch
 exec --no-startup-id copyq
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id xbanish 
