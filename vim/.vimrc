@@ -1,4 +1,4 @@
-
+let MACENV = $MACENV
 
 filetype plugin on
 
@@ -12,18 +12,31 @@ let s:pluginConf = g:vimDir.'/plugins/config.vim'
 
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 9000
-let g:vdebug_options["server"] = '' 
+let g:vdebug_options["server"] = ''
 "let g:vdebug_options['ide_key'] = 'PHPSTORM'
 " Mapping '/remote/path' : '/local/path'
+let g:vdebug_options["server"] = ''
+"let g:vdebug_options['ide_key'] = 'ECLIPSE'
 let g:vdebug_options['path_maps'] = {
-      \  '/var/www/ch.migros.karriere/web' : '/home/dulnan/Development/ch.migros.karriere/web',
+      \  '/var/www/ch.migros.karriere/web' : '~/Development/ch.migros.karriere/web',
       \}
+
+
+" Loads the global config, mapping and settings
+"
+" WebVim Configuration : global settings
+"
+" author: Bertrand Chevrier <chevrier.bertrand@gmail.com>
+" source: https://github.com/krampstudio/dotvim
+" year  : 2015
+"
 
 " wrap end of lin
 set wrap
 
 " show line numbers
 set number
+set relativenumber
 
 " syntax highlighting
 syntax on
@@ -39,6 +52,7 @@ let ayucolor="mirage"
 
 
 "let g:indent_guides_auto_colors = 0
+let g:indent_guides_auto_colors = 1
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
@@ -76,21 +90,43 @@ set mouse=a
 set spelllang=en_us
 set nospell
 
+au BufReadPost *.theme set syntax=php
+au BufReadPost *.module set syntax=php
+au BufReadPost *.lock set syntax=json
+
 let g:jsdoc_enable_es6=1
 let g:used_javascript_libs = 'jquery,underscore,vue,handlebars'
 
 let g:javascript_plugin_jsdoc = 1
 
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+
+
+
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|web\/themes\/asvz\|public\/system\|data\|log\|tmp$',
+  "\ 'file': '\v\.(exe|so|dll)$',
+  "\ 'link': 'some_bad_symbolic_links',
+  "\ }
+"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+"let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|web)|(\.(swp|ico|git|svn))$'
+
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_working_path_mode = 'r'
 
 let g:indent_guides_enable_on_vim_startup = 1
 
@@ -153,6 +189,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 inoremap jk <esc>
 inoremap <special> <esc> <nop>
 inoremap <esc>^[ <esc>^[
+map <C-t> :NERDTreeToggle<CR>
 
 " Disable arrow keys
 nnoremap <up> <nop>

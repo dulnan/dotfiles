@@ -8,6 +8,7 @@ fi
 
 export PATH=/home/dulnan/bin:$PATH
 export PATH=/home/go/bin:$PATH
+export PATH=~/Library/Python/3.6/bin:$PATH
 
 #source ~/.bash_profile
 export VISUAL=vim
