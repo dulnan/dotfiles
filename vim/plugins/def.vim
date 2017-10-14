@@ -53,7 +53,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'mustache/vim-mustache-handlebars'
-
+Plug 'chrisbra/csv.vim'
 call plug#end()
 
 

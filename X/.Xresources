@@ -152,8 +152,8 @@ URxvt.internalBorder: 8
 URxvt.intensityStyles: true
 
 !! Font settings
-URxvt.font:     		xft:Input Mono Narrow:style=Regular:size=11:antialias=true
-URxvt.boldFont:     xft:Input Mono Narrow:style=Bold:size=11:antialias=true
+URxvt.font:     		xft:Input Mono Narrow:style=Regular:size=10:antialias=true
+URxvt.boldFont:     xft:Input Mono Narrow:style=Bold:size=10:antialias=true
 URxvt.letterSpace: 	-1
 
 !! Load perl extentions
