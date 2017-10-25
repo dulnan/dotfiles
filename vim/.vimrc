@@ -18,7 +18,7 @@ let g:vdebug_options["server"] = ''
 let g:vdebug_options["server"] = ''
 "let g:vdebug_options['ide_key'] = 'ECLIPSE'
 let g:vdebug_options['path_maps'] = {
-      \  '/var/www/ch.migros.karriere/web' : '~/Development/ch.migros.karriere/web',
+      \  '/var/www/ch.migros.karriere/web' : '/home/dulnan/Development/ch.migros.karriere/web',
       \}
 
 
@@ -46,6 +46,7 @@ let g:vue_disable_pre_processors=1
 "set termguicolors
 "colorscheme fahrenheit 
 colorscheme spacegray 
+"colorscheme dracula
 let g:airline_theme='fahrenheit'
 let ayucolor="mirage"
 

@@ -41,7 +41,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 
 # Titlebars
-new_window pixel 3
+new_window pixel 1
 new_float normal
 
 gaps inner 0
@@ -214,10 +214,11 @@ bindsym $mod+Home exec playerctl previous
 
 exec --no-startup-id xrdb -load ~/.Xresources
 exec --no-startup-id compton --config ~/dotfiles/compton/.compton.conf
-exec --no-startup-id polybar left
 exec --no-startup-id polybar middle
-exec --no-startup-id polybar right
 exec --no-startup-id setxkbmap ch
 exec --no-startup-id copyq
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id xbanish 
+exec --no-startup-id xbanish
+exec --no-startup-id xmodmap ~/.Xmodmap
+
+# vim:filetype=i3

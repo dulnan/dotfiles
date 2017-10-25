@@ -54,6 +54,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'chrisbra/csv.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'dracula/vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
 call plug#end()
 
 
