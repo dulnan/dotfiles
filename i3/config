@@ -2,8 +2,7 @@ set $mod Mod4
 
 set $scripts /home/dulnan/.config/i3/scripts
 
-
-
+#Colors
 set $bg-color            			#1d2021
 set $inactive-bg-color   			#1b1b1b
 set $text-color          			#f3f4f5
@@ -12,12 +11,7 @@ set $urgent-bg-color     			#E53935
 set $border-focus				 			#bdae93
 set $border-focus-indicator		#7c6f64
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-#font pango:monospace 12
-
-# This font is widely installed, provides lots of unicode glyphs, right- to-left
-# text rendering and scalability o n retina/hidpi displays (thanks to pango).
+#Font
 font pango: RobotoMono SemiBold 11
 
 # window colors
@@ -27,99 +21,59 @@ client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-co
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $inactive-bg-color
 
-
-
-#bar {
-#	status_command polybar example
-#	status_command polybar dummy
-#	mode invisible
-#	position top
-#	tray_output none
-#}
-
-#exec polybar example
-
-
 # Titlebars
 new_window pixel 1
 new_float normal
-
+hide_edge_borders smart
 gaps inner 0
 gaps outer 0
 
 #smart_gaps on
 
-
+# Application key maping
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+space exec rofi -show combi -run-command "/bin/zsh -i -c '{cmd}'" -rnow
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-
 # kill focused window
 bindsym $mod+q kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+space exec rofi -show run -lines 3 -eh 2 -width 100 -padding 200 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "#00FF00" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
-# bindsym $mod+space exec rofi -show run -width 2560 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 19 -bw 0 -font "MonacoB 16" -padding 770 -separator-style none -opacity 80
-#bindsym $mod+space exec rofi -show combi
-bindsym $mod+space exec rofi -show combi -run-command "/bin/zsh -i -c '{cmd}'" -rnow
-# bindsym $mod+l exec lock
-
-
-
-# bindsym $mod+space exec rofi
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-
-# alternatively, you can use the cursor keys:
+# Focus
 bindsym $mod+Shift+h focus left
 bindsym $mod+Shift+l focus right
 bindsym $mod+Shift+k focus up
 bindsym $mod+Shift+j focus down
 
-# alternatively, you can use the cursor keys:
+# Move
 bindsym $mod+Control+h move left
 bindsym $mod+Control+l move right
 bindsym $mod+Control+k move up
 bindsym $mod+Control+j move down
 
-
-# same bindings, but for the arrow keys
+# Resize
 bindsym $mod+Mod1+h resize shrink width 3 px or 3 ppt
 bindsym $mod+Mod1+l resize grow width 3 px or 3 ppt
 bindsym $mod+Mod1+k resize shrink height 3 px or 3 ppt
 bindsym $mod+Mod1+j resize grow height 3 px or 3 ppt
 
 
-# split in horizontal orientation
-# bindsym $mod+h split h
-
-# split in vertical orientation
+# Split
 bindsym $mod+v split toggle
 
-# enter fullscreen mode for the focused container
+# Fullscreen
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+# Container Layout
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# Floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
-
-# focus the child container
-#bindsym $mod+d focus child
-
-
+#Workspaces
 workspace 1 output DVI-I-1
 workspace 2 output DVI-I-1
 workspace 3 output DVI-I-1
@@ -147,7 +101,6 @@ workspace 36 output DP-4
 workspace 37 output DP-4
 workspace 38 output DP-4
 
-
 # switch to workspace
 bindsym $mod+1 exec ~/.config/i3/scripts/i3switchworkspace focus 1
 bindsym $mod+2 exec ~/.config/i3/scripts/i3switchworkspace focus 2
@@ -168,7 +121,7 @@ bindsym $mod+Control+6 exec ~/.config/i3/scripts/i3switchworkspace move 6
 bindsym $mod+Control+7 exec ~/.config/i3/scripts/i3switchworkspace move 7
 bindsym $mod+Control+8 exec ~/.config/i3/scripts/i3switchworkspace move 8
 
-
+# Switch between workspaces
 bindsym $mod+h workspace prev_on_output
 bindsym $mod+l workspace next_on_output
 
@@ -178,32 +131,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# window (you can also use the mouse for that)
-#mode "resize" {
-#        # These bindings trigger as soon as you enter the resize mode
-
-#        # Pressing left will shrink the window’s width.
-#        # Pressing right will grow the window’s width.
-#        # Pressing up will shrink the window’s height.
-#        # Pressing down will grow the window’s height.
-#        bindsym j resize shrink width 10 px or 10 ppt
-#        bindsym k resize grow height 10 px or 10 ppt
-#        bindsym l resize shrink height 10 px or 10 ppt
-#        bindsym odiaeresis resize grow width 10 px or 10 ppt
-
-#        # same bindings, but for the arrow keys
-#        bindsym Left resize shrink width 10 px or 10 ppt
-#        bindsym Down resize grow height 10 px or 10 ppt
-#        bindsym Up resize shrink height 10 px or 10 ppt
-#        bindsym Right resize grow width 10 px or 10 ppt
-
-#        # back to normal: Enter or Escape
-#        bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
-
-
 
 bindsym XF86Launch5 exec lock
 bindsym XF86Launch6 exec playerctl play-pause
@@ -220,5 +147,18 @@ exec --no-startup-id copyq
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xbanish
 exec --no-startup-id xmodmap ~/.Xmodmap
+
+
+
+assign [class="^spotify$"] 1
+assign [class="^slack$"] 2
+assign [class="^TelegramDesktop$"] 2
+
+
+exec spotify
+exec slack
+exec telegram-desktop
+
+exec --no-startup-id i3-msg 'workspace 31; exec urxvt; workspace 21'
 
 # vim:filetype=i3

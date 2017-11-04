@@ -130,7 +130,7 @@ background: #111314
 
 
 
-rofi.auto-select: true
+rofi.auto-select: false
 rofi.show-match: false
 
 
