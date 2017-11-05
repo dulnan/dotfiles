@@ -6,7 +6,6 @@ let g:vimDir = $HOME.'/.vim'
 
 let g:hardcoreMode = 1
 
-let s:pluginDir  = g:vimDir.'/plugins/plugged'
 let s:pluginDef  = g:vimDir.'/plugins/def.vim'
 let s:pluginConf = g:vimDir.'/plugins/config.vim'
 
@@ -22,15 +21,7 @@ let g:vdebug_options['path_maps'] = {
       \}
 
 
-" Loads the global config, mapping and settings
-"
-" WebVim Configuration : global settings
-"
-" author: Bertrand Chevrier <chevrier.bertrand@gmail.com>
-" source: https://github.com/krampstudio/dotvim
-" year  : 2015
-"
-
+set noshowmode
 " wrap end of lin
 set wrap
 
