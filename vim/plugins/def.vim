@@ -54,6 +54,10 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
 Plug 'danhodos/vim-comb'
+Plug 'chrisbra/csv.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'dracula/vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
 call plug#end()
 
 
