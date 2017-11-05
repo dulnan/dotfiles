@@ -1,11 +1,9 @@
 # system wide vim arrow mapping
-lctrl - h         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- left"
 lctrl - j         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- down"
 lctrl - k         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- up"
-lctrl - l         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- right"
 
 
-
+cmd - return: open -n /Applications/Alacritty.app
 
 
 

@@ -12,7 +12,6 @@
 
 " [> NERDCommenter <]
 
-noremap <c-_> :call NERDComment(0, "Toggle")<cr>
 
 
 " [> Airline <]
