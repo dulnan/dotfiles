@@ -1,29 +1,5 @@
-"
-" WebVim Configuration : Plugins configuration
-"
-" author: Bertrand Chevrier <chevrier.bertrand@gmail.com>
-" source: https://github.com/krampstudio/dotvim
-" year  : 2015
-"
-
-" TODO split by plugin ?
-
-
-
-" [> NERDCommenter <]
-
-noremap <c-_> :call NERDComment(0, "Toggle")<cr>
-
-
-" [> Airline <]
-
 " status line always opened
 set laststatus=2
-
-let g:airline#extensions#tabline#enabled = 1
-
-"  powerline font
-let g:airline_powerline_fonts=1
 
 " [> EditorConfig <]
 

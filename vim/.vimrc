@@ -3,34 +3,18 @@ let MACENV = $MACENV
 filetype plugin on
 
 let g:vimDir = $HOME.'/.vim'
-
-let g:hardcoreMode = 1
-
-let s:pluginDir  = g:vimDir.'/plugins/plugged'
 let s:pluginDef  = g:vimDir.'/plugins/def.vim'
 let s:pluginConf = g:vimDir.'/plugins/config.vim'
 
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 9000
 let g:vdebug_options["server"] = ''
-"let g:vdebug_options['ide_key'] = 'PHPSTORM'
-" Mapping '/remote/path' : '/local/path'
 let g:vdebug_options["server"] = ''
-"let g:vdebug_options['ide_key'] = 'ECLIPSE'
 let g:vdebug_options['path_maps'] = {
-      \  '/var/www/ch.migros.karriere/web' : '/home/dulnan/Development/ch.migros.karriere/web',
+      \  '/var/www/ch.migros.karriere/web' : '~/Development/ch.migros.karriere/web',
       \}
 
-
-" Loads the global config, mapping and settings
-"
-" WebVim Configuration : global settings
-"
-" author: Bertrand Chevrier <chevrier.bertrand@gmail.com>
-" source: https://github.com/krampstudio/dotvim
-" year  : 2015
-"
-
+set noshowmode
 " wrap end of lin
 set wrap
 
@@ -44,11 +28,68 @@ set background=dark
 set t_Co=256
 let g:vue_disable_pre_processors=1
 "set termguicolors
-"colorscheme fahrenheit 
-colorscheme spacegray 
-"colorscheme dracula
-let g:airline_theme='fahrenheit'
-let ayucolor="mirage"
+"colorscheme fahrenheit
+colorscheme spacegray
+
+" ALE
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
+
+" Lightline
+let g:lightline = {
+\ 'colorscheme': 'Tomorrow_Night_Eighties',
+\ 'active': {
+\   'left': [['mode', 'paste'], ['filename', 'modified']],
+\   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+\ },
+\ 'component_expand': {
+\   'linter_warnings': 'LightlineLinterWarnings',
+\   'linter_errors': 'LightlineLinterErrors',
+\   'linter_ok': 'LightlineLinterOK'
+\ },
+\ 'component_type': {
+\   'readonly': 'error',
+\   'linter_warnings': 'warning',
+\   'linter_errors': 'error'
+\ },
+\ }
+
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+endfunction
+
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+endfunction
+
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓ ' : ''
+endfunction
+
+
+autocmd User ALELint call s:MaybeUpdateLightline()
+
+" Update and show lightline but only if it's visible (e.g., not in Goyo)
+function! s:MaybeUpdateLightline()
+  if exists('#lightline')
+    call lightline#update()
+  end
+endfunction
+
+
+
+
 
 
 
@@ -69,7 +110,7 @@ set expandtab
 set tabstop=2
 "search
 set showmatch
-set ignorecase 
+set ignorecase
 
 set hlsearch
 set incsearch
@@ -115,6 +156,30 @@ endif
 
 
 
+" NERD Commenter
+
+noremap <c-o> :call NERDComment(0, "Toggle")<cr>
+
+let g:ft = ''
+fu! NERDCommenter_before()
+  if &ft == 'vue'
+    let g:ft = 'vue'
+    let stack = synstack(line('.'), col('.'))
+    if len(stack) > 0
+      let syn = synIDattr((stack)[0], 'name')
+      if len(syn) > 0
+        let syn = tolower(syn)
+        exe 'setf '.syn
+      endif
+    endif
+  endif
+endfu
+fu! NERDCommenter_after()
+  if g:ft == 'vue'
+    setf vue
+    g:ft
+  endif
+endfu
 
 "let g:ctrlp_custom_ignore = {
   "\ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.yardoc\|web\/themes\/asvz\|public\/system\|data\|log\|tmp$',
@@ -207,7 +272,7 @@ inoremap <right> <nop>
 nnoremap <C-w>v :vnew<CR>
 
 "
-" Autocommands 
+" Autocommands
 "
 
 " Force filetype
