@@ -3,23 +3,16 @@ let MACENV = $MACENV
 filetype plugin on
 
 let g:vimDir = $HOME.'/.vim'
-
-let g:hardcoreMode = 1
-
 let s:pluginDef  = g:vimDir.'/plugins/def.vim'
 let s:pluginConf = g:vimDir.'/plugins/config.vim'
 
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 9000
 let g:vdebug_options["server"] = ''
-"let g:vdebug_options['ide_key'] = 'PHPSTORM'
-" Mapping '/remote/path' : '/local/path'
 let g:vdebug_options["server"] = ''
-"let g:vdebug_options['ide_key'] = 'ECLIPSE'
 let g:vdebug_options['path_maps'] = {
       \  '/var/www/ch.migros.karriere/web' : '~/Development/ch.migros.karriere/web',
       \}
-
 
 set noshowmode
 " wrap end of lin
@@ -117,7 +110,7 @@ set expandtab
 set tabstop=2
 "search
 set showmatch
-set ignorecase 
+set ignorecase
 
 set hlsearch
 set incsearch
@@ -279,7 +272,7 @@ inoremap <right> <nop>
 nnoremap <C-w>v :vnew<CR>
 
 "
-" Autocommands 
+" Autocommands
 "
 
 " Force filetype
