@@ -31,7 +31,7 @@ gaps outer 0
 #smart_gaps on
 
 # Application key maping
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id ~/.config/i3/scripts/launchterm.sh
 bindsym $mod+space exec rofi -show combi -run-command "/bin/zsh -i -c '{cmd}'" -rnow
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -74,14 +74,14 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 #Workspaces
-workspace 1 output DVI-I-1
-workspace 2 output DVI-I-1
-workspace 3 output DVI-I-1
-workspace 4 output DVI-I-1
-workspace 5 output DVI-I-1
-workspace 6 output DVI-I-1
-workspace 7 output DVI-I-1
-workspace 8 output DVI-I-1
+workspace 1 output DP-0
+workspace 2 output DP-0
+workspace 3 output DP-0
+workspace 4 output DP-0
+workspace 5 output DP-0
+workspace 6 output DP-0
+workspace 7 output DP-0
+workspace 8 output DP-0
 
 workspace 21 output DP-2
 workspace 22 output DP-2
@@ -92,14 +92,14 @@ workspace 26 output DP-2
 workspace 27 output DP-2
 workspace 28 output DP-2
 
-workspace 31 output DP-4
-workspace 32 output DP-4
-workspace 33 output DP-4
-workspace 34 output DP-4
-workspace 35 output DP-4
-workspace 36 output DP-4
-workspace 37 output DP-4
-workspace 38 output DP-4
+workspace 41 output DP-4
+workspace 42 output DP-4
+workspace 43 output DP-4
+workspace 44 output DP-4
+workspace 45 output DP-4
+workspace 46 output DP-4
+workspace 47 output DP-4
+workspace 48 output DP-4
 
 # switch to workspace
 bindsym $mod+1 exec ~/.config/i3/scripts/i3switchworkspace focus 1
@@ -139,26 +139,17 @@ bindsym Ctrl+XF86Tools exec maim --hidecursor -s --format=png /dev/stdout | copy
 bindsym $mod+End exec playerctl next
 bindsym $mod+Home exec playerctl previous
 
-exec --no-startup-id xrdb -load ~/.Xresources
 exec --no-startup-id compton --config ~/dotfiles/compton/.compton.conf
 exec --no-startup-id polybar middle
 exec --no-startup-id setxkbmap ch
 exec --no-startup-id copyq
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xbanish
-exec --no-startup-id xmodmap ~/.Xmodmap
 
-
-
-assign [class="^spotify$"] 1
-assign [class="^slack$"] 2
-assign [class="^TelegramDesktop$"] 2
-
-
-exec spotify
-exec slack
-exec telegram-desktop
-
-exec --no-startup-id i3-msg 'workspace 31; exec urxvt; workspace 21'
+exec --no-startup-id i3-msg 'workspace 1; exec spotify'
+exec --no-startup-id i3-msg 'workspace 2; exec slack'
+exec --no-startup-id i3-msg 'workspace 2; exec telegram-desktop'
+exec --no-startup-id i3-msg 'workspace 41; exec urxvt'
+exec --no-startup-id i3-msg 'workspace 41; exec urxvt'
 
 # vim:filetype=i3

@@ -126,8 +126,9 @@ plugins=(git archlinux composer fasd npm sudo systemd vagrant web-search wd)
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nautilus="gtk3-nocsd nautilus"
 alias chromium="gtk3-nocsd chromium --force-device-scale-factor=1.45"
-alias slack="gtk3-nocsd slack --force-device-scale-factor=1.3"
-alias spotify="spotify --force-device-scale-factor=0.3"
+alias slack="gtk3-nocsd slack --force-device-scale-factor=1"
+alias spotify="spotify --force-device-scale-factor=1"
+alias gitkraken="gitkraken --force-device-scale-factor=1"
 alias ls="ls -la"
 
 alias vim='nvim'
@@ -151,3 +152,6 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source $HOME/.cargo/env
+
+
+source "/home/dulnan/.oh-my-zsh/custom/themes/spaceship.zsh-theme"

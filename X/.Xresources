@@ -185,9 +185,11 @@ URxvt.internalBorder: 8
 URxvt.intensityStyles: true
 
 !! Font settings
+! Font size is determined on launch in ~/.config/i3/scripts/launchterm.sh
 URxvt.font:     		xft:Input Mono Narrow:style=Regular:size=10:antialias=true
 URxvt.boldFont:     xft:Input Mono Narrow:style=Bold:size=10:antialias=true
-URxvt.letterSpace: 	-1
+URxvt.letterSpace: 	-2
+URxvt.lineSpace: 	-6
 
 !! Load perl extentions
 URxvt.perl-ext-common: default,matcher,font-size
@@ -225,11 +227,9 @@ URxvt.keysym.C-slash:  font-size:show
 Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb
-Xft.hintstyle: hintslight 
+Xft.hintstyle: hintslight
 Xft.lcdfilter: hintslight
-Xft.dpi:      140
 ! }}}
-
 
 !URxvt*inheritPixmap: true
 URxvt*.transparent: false
