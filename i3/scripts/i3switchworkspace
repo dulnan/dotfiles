@@ -10,7 +10,7 @@ if [ "$FOCUSEDOUTPUT" = "DP-2" ]
 	WORKSPACE=$((FKEY + 20))
 elif [ "$FOCUSEDOUTPUT" = "DP-4" ]
 	then
-	WORKSPACE=$((FKEY + 30))
+	WORKSPACE=$((FKEY + 40))
 else
 	WORKSPACE=$((FKEY))
 fi

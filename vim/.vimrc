@@ -11,7 +11,7 @@ let g:vdebug_options["port"] = 9000
 let g:vdebug_options["server"] = ''
 let g:vdebug_options["server"] = ''
 let g:vdebug_options['path_maps'] = {
-      \  '/var/www/ch.migros.karriere/web' : '~/Development/ch.migros.karriere/web',
+      \  '/var/www/ch.migros.karriere/web' : '/home/dulnan/Development/ch.migros.karriere/web',
       \}
 
 set noshowmode
@@ -154,7 +154,8 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-
+" NERD Tree
+let NERDTreeShowHidden=1
 
 " NERD Commenter
 
