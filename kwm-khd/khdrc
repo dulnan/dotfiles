@@ -32,8 +32,9 @@ cmd + shift - k:   chunkc tiling::window --focus north
 cmd + shift - j:   chunkc tiling::window --focus south
 
 # move window to next display (0x2F = . )
-cmd + ctrl - 0x2F               :   chunkc tiling::window --send-to-monitor index 
-cmd + ctrl + alt - h            :   chunkc tiling::window --use-insertion-point west 
+cmd + shift + ctrl - h                  :   bash ./Development/dotfiles/chunkwm/movewindow.sh left
+cmd + shift + ctrl - l                  :   bash ./Development/dotfiles/chunkwm/movewindow.sh right
+cmd + ctrl + alt - h            :   chunkc tiling::window --use-insertion-point west
 cmd + ctrl + alt - l            :   chunkc tiling::window --use-insertion-point east
 cmd + ctrl + alt - k            :   chunkc tiling::window --use-insertion-point north
 cmd + ctrl + alt - j            :   chunkc tiling::window --use-insertion-point south
