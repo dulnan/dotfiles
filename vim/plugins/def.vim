@@ -19,7 +19,9 @@ Plug 'elzr/vim-json'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'csscomb/vim-csscomb'
 Plug 'othree/html5.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'Valloric/YouCompleteMe', { 'do': function('InstallYCM') }
 "Plug 'moll/vim-node'
 "Plug 'syngan/vim-vimlint'

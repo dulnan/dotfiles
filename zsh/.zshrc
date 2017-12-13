@@ -44,8 +44,7 @@ ZSH=~/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-# ZSH_THEME="wezm"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status root_indicator  time)
 POWERLEVEL9K_CONTEXT_TEMPLATE="%"
@@ -154,4 +153,11 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 source $HOME/.cargo/env
 
 
-source "/home/dulnan/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+if [[ $platform == 'linux' ]]; then
+  source "/home/dulnan/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+else
+  source "/Users/dulnan/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+fi
+
+
+ZSH_THEME="spaceship"

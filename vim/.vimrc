@@ -26,7 +26,7 @@ set relativenumber
 syntax on
 set background=dark
 set t_Co=256
-let g:vue_disable_pre_processors=1
+"let g:vue_disable_pre_processors=1
 "set termguicolors
 "colorscheme fahrenheit
 colorscheme spacegray
@@ -287,7 +287,7 @@ au BufReadPost *.module set syntax=php
 " made, these lines close it on movement in insert mode or when leaving
 " insert mode
 "autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
 
