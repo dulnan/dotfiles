@@ -159,7 +159,9 @@ let NERDTreeShowHidden=1
 
 " NERD Commenter
 
-noremap <c-o> :call NERDComment(0, "Toggle")<cr>
+"noremap <c-o> :call NERDComment(0, "Toggle")<cr>
+nmap <c-o> <plug>NERDCommenterToggle
+vmap <c-o> <plug>NERDCommenterToggle gv
 
 let g:ft = ''
 fu! NERDCommenter_before()
@@ -294,3 +296,5 @@ au BufReadPost *.module set syntax=php
 " Loads plugins def and config
 exec ":source ".s:pluginDef
 exec ":source ".s:pluginConf
+
+com! FormatJSON %!python -m json.tool
