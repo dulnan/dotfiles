@@ -5,7 +5,7 @@ APP=$1
 
 if [ "$FOCUSEDOUTPUT" = "DP-2" ]
 	then
-  exec $APP --force-device-scale-factor=2
+  exec $APP --force-device-scale-factor=1.5
 else
   exec $APP --force-device-scale-factor=1
 fi

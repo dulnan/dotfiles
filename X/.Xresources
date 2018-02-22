@@ -186,8 +186,11 @@ URxvt.intensityStyles: true
 
 !! Font settings
 ! Font size is determined on launch in ~/.config/i3/scripts/launchterm.sh
-URxvt.font:     		xft:Input Mono Narrow:style=Regular:size=10:antialias=true
-URxvt.boldFont:     xft:Input Mono Narrow:style=Bold:size=10:antialias=true
+! URxvt.font:     		xft:Input Mono Narrow:style=Regular:size=10:antialias=true
+! URxvt.boldFont:     xft:Input Mono Narrow:style=Bold:size=10:antialias=true
+URxvt.font:     		xft:Fira Code Retina:style=Regular:size=10:antialias=true
+URxvt.boldFont:     xft:Fira Code:style=Bold:size=10:antialias=true
+
 URxvt.letterSpace: 	-2
 URxvt.lineSpace: 	-6
 
