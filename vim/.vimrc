@@ -26,7 +26,7 @@ set relativenumber
 syntax on
 set background=dark
 set t_Co=256
-let g:vue_disable_pre_processors=1
+"let g:vue_disable_pre_processors=1
 "set termguicolors
 "colorscheme fahrenheit
 colorscheme spacegray
@@ -160,7 +160,9 @@ let NERDTreeShowHidden=1
 " NERD Commenter
 let NERDSpaceDelims=1
 
-noremap <c-o> :call NERDComment(0, "Toggle")<cr>
+"noremap <c-o> :call NERDComment(0, "Toggle")<cr>
+nmap <c-o> <plug>NERDCommenterToggle
+vmap <c-o> <plug>NERDCommenterToggle gv
 
 let g:ft = ''
 fu! NERDCommenter_before()
@@ -288,10 +290,12 @@ au BufReadPost *.module set syntax=php
 " made, these lines close it on movement in insert mode or when leaving
 " insert mode
 "autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
 
 " Loads plugins def and config
 exec ":source ".s:pluginDef
 exec ":source ".s:pluginConf
+
+com! FormatJSON %!python -m json.tool
