@@ -158,6 +158,7 @@ endif
 let NERDTreeShowHidden=1
 
 " NERD Commenter
+let NERDSpaceDelims=1
 
 noremap <c-o> :call NERDComment(0, "Toggle")<cr>
 
