@@ -3,7 +3,7 @@ lctrl - j         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- down"
 lctrl - k         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- up"
 
 
-cmd - return: open -n /Applications/Alacritty.app
+#cmd - return: open -n /Applications/Alacritty.app
 
 
 

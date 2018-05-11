@@ -1,0 +1,26 @@
+{
+    "workbench.iconTheme": "eq-material-theme-icons",
+    "workbench.colorTheme": "Ayu Dark",
+    "editor.fontSize": 14,
+    "vim.hlsearch": true,
+    "editor.tabSize": 2,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before":["<C-n>"],
+            "after":[],
+            "commands": [
+                {
+                    "command": ":nohl",
+                    "args": []
+                }
+            ]
+        },
+    ],
+    "editor.minimap.enabled": false
+}
