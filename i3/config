@@ -139,12 +139,15 @@ bindsym Ctrl+XF86Tools exec maim --hidecursor -s --format=png /dev/stdout | copy
 bindsym $mod+End exec playerctl next
 bindsym $mod+Home exec playerctl previous
 
+exec --no-startup-id xrdb .Xresources
+exec --no-startup-id xmodmap .Xmodmap
 exec --no-startup-id compton --config ~/dotfiles/compton/.compton.conf
 exec --no-startup-id polybar middle
 exec --no-startup-id setxkbmap ch
 exec --no-startup-id copyq
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xbanish
+
 
 exec --no-startup-id i3-msg 'workspace 1; exec spotify'
 exec --no-startup-id i3-msg 'workspace 2; exec slack'
