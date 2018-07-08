@@ -1,115 +1,112 @@
+/**
+ * User: deadguy
+ * Copyright: deadguy
+ */
+
+configuration {
+	display-drun:    "";
+	display-run:     "";
+	display-window:  "";
+	show-icons:      false;
+	sidebar-mode:    false;
+}
+
 * {
-    blue:  #0000FF;
-    white: #FFFFFF;
-    black: #000000;
-    grey:  #eeeeee;
+  font:                        "IBM Plex Sans Light 40";
+	text-color:                  #d3d7cf;
+	selbg:                       #00FF00;
+	actbg:                       #14191f;
+	urgbg:                       #e53935;
+	winbg:			                 @text-color;
+	brand:                       #f29718;
+	gray-light:                  #737d87;
+	white:                       #d9d7ce;
 
-    spacing: 2;
-    background: #00000000;
-    anchor: north;
-    location: center;
-}
-#window {
-    transparency: "screenshot";
-    background: #00000000;
-    border: 0;
-    padding: 0% 0% 1em 0%;
-    foreground: #FF444444;
-    x-offset: 0;
-    y-offset: -10%;
-}
-#window.mainbox {
-    padding: 0px;
-}
-#window.mainbox.box {
-    border: 0;
-    spacing: 1%;
-}
-#window.mainbox.message.box {
-    border: 2px; 
-    padding: 1em; 
-    background: @white; 
-    foreground: @back;
-}
-#window.mainbox.message.normal {
-    foreground: #FF002B36;
-    padding: 0;
-    border: 0;
-}
-#window.mainbox.listview {
-    fixed-height: 1;
-    border: 2px;
-    padding: 1em;
-    reverse: false;
+	selected-normal-foreground:  @winbg;
+	normal-foreground:           @text-color;
+	selected-normal-background:  @actbg;
+	normal-background:           @background-color;
 
-    columns: 1;
-    background: @white; 
-}
-#window.mainbox.listview.element {
-    border: 0;
-    padding: 2px;
-    highlight: bold ;
-}
-#window.mainbox.listview.element.normal.normal {
-    foreground: #FF002B36;
-    background: #00F5F5F5;
-}
-#window.mainbox.listview.element.normal.urgent {
-    foreground: #FFD75F00;
-    background: #FFF5F5F5;
-}
-#window.mainbox.listview.element.normal.active {
-    foreground: #FF005F87;
-    background: #FFF5F5F5;
-}
-#window.mainbox.listview.element.selected.normal {
-    foreground: #FFF5F5F5;
-    background: #FF4271AE;
-}
-#window.mainbox.listview.element.selected.urgent {
-    foreground: #FFF5F5F5;
-    background: #FFD75F00;
-}
-#window.mainbox.listview.element.selected.active {
-    foreground: #FFF5F5F5;
-    background: #FF005F87;
-}
-#window.mainbox.listview.element.alternate.normal {
-    foreground: #FF002B36;
-    background: #FFD0D0D0;
-}
-#window.mainbox.listview.element.alternate.urgent {
-    foreground: #FFD75F00;
-    background: #FFD0D0D0;
-}
-#window.mainbox.listview.element.alternate.active {
-    foreground: #FF005F87;
-    background: #FFD0D0D0;
-}
-#window.mainbox.listview.scrollbar {
-    border: 0;
-    padding: 0;
-}
-#window.mainbox.inputbar {
-    spacing: 0;
-}
-#window.mainbox.inputbar.box {
-    border: 2px;
-    padding: 0.5em 1em;
-    background: @grey;
-    index: 0;
-}
-#window.mainbox.inputbar.normal {
-    foreground: #FF002B36;
-    background: #00F5F5F5;
+	selected-urgent-foreground:  @background-color;
+	urgent-foreground:           @text-color;
+	selected-urgent-background:  @urgbg;
+	urgent-background:           @background-color;
+
+	selected-active-foreground:  @brand;
+	active-foreground:           @text-color;
+	selected-active-background:  @actbg;
+
+	line-margin:                 1;
+	line-padding:                1;
+	separator-style:             "none";
+	hide-scrollbar:              "true";
+	margin:                      0;
+	padding:                     0;
+	background-color:            #08080800;
 }
 
-#window.mainbox.sidebar.box {
-    border: 2px;
-    padding: 0.5em 1em;
-    background: @grey;
-    index: 10;
+#overlay {
+	width: 100%;
+	height: 100%;
 }
-#window.mainbox.sidebar.button selected {
-    text: #FF4271AE;
+
+window {
+	location:	 center;
+	anchor:		 center;
+	height:		 100%;
+	width:		 100%;
+	margin:    50 0 0 0;
+	orientation: horizontal;
+	children:	 [mainbox];
+	border:   0;
+	border-color: @brand;
+	transparency: true;
+	background-color:            #080808DF;
+}
+
+mainbox {
+	spacing:  0.8em;
+	padding: 10px 200px;
+	children: [ entry,listview,sidebar ];
+}
+
+button { padding: 5px 2px; }
+
+button selected {
+	text-color:       @background-color;
+}
+
+inputbar {
+	padding: 5px;
+	spacing: 5px;
+}
+
+listview {
+	spacing: 0.1em;
+	dynamic: false;
+	cycle:   true;
+}
+
+entry {
+	expand:         false;
+	text-color:     @white;
+	vertical-align: 1;
+	padding:        100px 0 0 0px;
+  font:                        "IBM Plex Sans Bold 140";
+}
+
+element {
+  padding: 10px 0;
+	text-color:       @gray-light;
+}
+
+element normal {
+	text-color:       @gray-light;
+}
+
+element normal.active {
+}
+
+element selected {
+	text-color:       @white;
 }
