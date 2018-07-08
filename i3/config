@@ -4,11 +4,11 @@ set $scripts /home/dulnan/.config/i3/scripts
 
 #Colors
 set $bg-color            			#1d2021
-set $inactive-bg-color   			#1b1b1b
+set $inactive-bg-color   			#66737f
 set $text-color          			#f3f4f5
 set $inactive-text-color 			#676E7D
 set $urgent-bg-color     			#E53935
-set $border-focus				 			#bdae93
+set $border-focus				 			#d9d7ce
 set $border-focus-indicator		#7c6f64
 
 #Font
@@ -24,11 +24,11 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # Titlebars
 new_window pixel 1
 new_float normal
-hide_edge_borders smart
-gaps inner 0
-gaps outer 0
+# hide_edge_borders smart
+gaps inner 15
+gaps outer 5
 
-#smart_gaps on
+smart_gaps on
 
 # Application key maping
 bindsym $mod+Return exec --no-startup-id ~/.config/i3/scripts/launchterm.sh
@@ -140,13 +140,13 @@ bindsym $mod+End exec playerctl next
 bindsym $mod+Home exec playerctl previous
 
 exec --no-startup-id xrdb .Xresources
-exec --no-startup-id xmodmap .Xmodmap
 exec --no-startup-id compton --config ~/dotfiles/compton/.compton.conf
-exec --no-startup-id polybar middle
-exec --no-startup-id setxkbmap ch
+exec --no-startup-id polybar example
 exec --no-startup-id copyq
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xbanish
+exec --no-startup-id setxkbmap ch
+exec --no-startup-id xmodmap ~/.Xmodmap
 
 
 exec --no-startup-id i3-msg 'workspace 1; exec spotify'

@@ -37,13 +37,6 @@ promptinit
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-ZSH=~/.oh-my-zsh
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
 #ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status root_indicator  time)
@@ -122,7 +115,6 @@ plugins=(git archlinux composer fasd npm sudo systemd vagrant web-search wd)
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nautilus="gtk3-nocsd nautilus"
 alias chromium="gtk3-nocsd chromium --force-device-scale-factor=1.45"
 alias slack="gtk3-nocsd slack --force-device-scale-factor=1"
@@ -131,7 +123,6 @@ alias gitkraken="gitkraken --force-device-scale-factor=1"
 alias ls="ls -la"
 
 alias vim='nvim'
-ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
@@ -140,7 +131,6 @@ if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec startx
 fi
 
-source $ZSH/oh-my-zsh.sh
 
 if [[ $platform == 'linux' ]]; then
   source /usr/share/nvm/init-nvm.sh
@@ -151,13 +141,5 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source $HOME/.cargo/env
-
-
-if [[ $platform == 'linux' ]]; then
-  source "/home/dulnan/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
-else
-  source "/Users/dulnan/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
-fi
-
 
 ZSH_THEME="spaceship"
