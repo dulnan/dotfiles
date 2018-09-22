@@ -23,7 +23,7 @@ set spelllang=en_us
 set nospell
 set ruler
 set laststatus=2
-set cursorline
+set nocursorline
 
 if (has("termguicolors"))
   set termguicolors

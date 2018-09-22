@@ -4,13 +4,15 @@
     "editor.fontSize": 14,
     "vim.hlsearch": true,
     "editor.tabSize": 2,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
     "vim.insertModeKeyBindings": [
         {
             "before": ["j", "k"],
             "after": ["<Esc>"]
         }
     ],
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before":["<C-n>"],
             "after":[],
@@ -22,5 +24,7 @@
             ]
         },
     ],
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false
 }
