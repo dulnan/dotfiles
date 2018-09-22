@@ -12,10 +12,6 @@ set nowrap                          " wrap end of line
 set number                          " show line numbers
 set relativenumber                  " show relative numbers
 syntax on                           " syntax highlighting
-set background=dark                 " set the background to dark
-set t_Co=256                        " enable 256 color terminal
-colorscheme gruvbox                 " set the color scheme
-let g:gruvbox_contrast_dark = 'hard'
 set clipboard=unnamedplus
 set foldmethod=manual
 set mouse=a
@@ -24,10 +20,6 @@ set nospell
 set ruler
 set laststatus=2
 set nocursorline
-
-if (has("termguicolors"))
-  set termguicolors
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " INDENTATION
@@ -202,6 +194,7 @@ Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript' , { 'for': ['javascript', 'javascript.jsx', 'html', 'vue'] }
 
 Plug 'itchyny/lightline.vim'
+Plug 'ayu-theme/ayu-vim'
 
 ""Plug 'junegunn/vim-easy-align'
 "Plug 'terryma/vim-multiple-cursors'
@@ -682,3 +675,10 @@ let g:vimDir = $HOME.'/.vim'
 
 "let g:indent_guides_enable_on_vim_startup = 1
 
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+"set termguicolors
+set t_Co=256                        " enable 256 color terminal
+colorscheme ayu                     " set the color scheme
+let ayucolor="dark"
+set background=dark                 " set the background to dark

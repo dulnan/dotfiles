@@ -1,0 +1,108 @@
+!
+! Generated with :
+! XRDB2Xreources.py
+!
+*.foreground:  #e6e1cf
+*.background:  #0f1419
+*.cursorColor: #f29718
+!
+! Black
+*.color0:      #000000
+*.color8:      #323232
+!
+! Red
+*.color1:      #ff3333
+*.color9:      #ff6565
+!
+! Green
+*.color2:      #b8cc52
+*.color10:     #eafe84
+!
+! Yellow
+*.color3:      #e7c547
+*.color11:     #fff779
+!
+! Blue
+*.color4:      #36a3d9
+*.color12:     #68d5ff
+!
+! Magenta
+*.color5:      #f07178
+*.color13:     #ffa3aa
+!
+! Cyan
+*.color6:      #95e6cb
+*.color14:     #c7fffd
+!
+! White
+*.color7:      #ffffff
+*.color15:     #ffffff
+!
+! Bold, Italic, Underline
+*.colorBD:     #e6e1cf
+!*.colorIT:
+!*.colorUL:
+
+
+rofi.auto-select: false
+rofi.show-match: false
+
+
+! ------------------------------------------------------------------------------
+! Mouse cursor stuff
+! ------------------------------------------------------------------------------
+Xcursor.theme: Adwaita
+Xcursor.size: 18
+
+! ------------------------------------------------------------------------------
+! urxvt stuff
+! ------------------------------------------------------------------------------
+!! General URxvt settings
+URxvt.depth:        32
+URxvt.scrollBar:    false
+URxvt.saveLines: 10000
+URxvt.internalBorder: 8
+
+URxvt.intensityStyles: true
+
+!! Font settings
+! Font size is determined on launch in ~/.config/i3/scripts/launchterm.sh
+URxvt.font:     		xft:Fira Code Retina:style=Regular:size=10:antialias=true
+URxvt.boldFont:     xft:Fira Code:style=Bold:size=10:antialias=true
+
+URxvt.letterSpace: 	-0
+URxvt.lineSpace: 	-3
+
+!! Load perl extentions
+URxvt.perl-ext-common: default,matcher,font-size
+
+!! Open links with Ctrl+left mouse in firefox
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: C1
+
+!! Change font size on Control-Plus/Minus
+URxvt.keysym.C-KP_Add:     font-size:increase
+URxvt.keysym.C-KP_Subtract:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+
+
+! Fonts {{{
+Xft.dpi:       150
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.hintstyle: hintslight
+Xft.lcdfilter: hintslight
+! }}}
+
+!URxvt*inheritPixmap: true
+! URxvt*.transparent: true
+! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
+! URxvt*.shading: 200
+
+urxvt*depth: 32
+! urxvt*background: rgba:0000/0000/0200/c800
+urxvt*background:  [97]#0f1419
