@@ -2,11 +2,13 @@
 
 FOCUSEDOUTPUT=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).output' | cut -d"\"" -f2)
 
-if [ "$FOCUSEDOUTPUT" = "DP-2" ]
+echo $FOCUSEDOUTPUT
+
+if [ "$FOCUSEDOUTPUT" = "eDP-1" ]
 	then
   # High DPI
-  urxvt -fn "xft:Fira Code Retina:style=Regular:size=10:antialias=true" -fb "xft:Fira Code:style=Medium:size=10:antialias=true" -letsp -1
+  urxvt -fn "xft:Iosevka Term:style=Regular:size=11:antialias=true" -fb "xft:Iosevka Term:style=Medium:size=11:antialias=true" -letsp 0
 else
   # Low DPI
-  urxvt -fn "xft:Hack Nerd Font Mono:style=Regular:size=10:antialias=true" -fb "xft:Hack Nerd Font Mono:style=Bold:size=10:antialias=true"
+  urxvt -fn "xft:Iosevka Term:style=Regular:size=9:antialias=true" -fb "xft:Iosevka Term:style=Medium:size=9:antialias=true" -letsp 0
 fi

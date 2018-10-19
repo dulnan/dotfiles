@@ -1,4 +1,5 @@
 set $mod Mod4
+set $altgr Hyper_R
 
 set $scripts /home/dulnan/.config/i3/scripts
 
@@ -14,25 +15,42 @@ set $border-focus-indicator		#7c6f64
 #Font
 font pango: RobotoMono SemiBold 11
 
+
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg_active i3wm.foreground #f0f0f0
+set_from_resource $bg i3wm.color8 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg_active     $bg     $fg  $bg       $bg_active
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+
+
 # window colors
 #                       border              background         text                 indicator									child_border
-client.focused          $border-focus       $bg-color          $text-color          $border-focus-indicator 						$border-focus
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $inactive-bg-color
 
 # Titlebars
 new_window pixel 1
 new_float normal
-# hide_edge_borders smart
-gaps inner 15
-gaps outer 5
+hide_edge_borders smart
+gaps inner 0
+gaps outer 0
 
 smart_gaps on
 
 # Application key maping
 bindsym $mod+Return exec --no-startup-id ~/.config/i3/scripts/launchterm.sh
-bindsym $mod+space exec rofi -show combi -run-command "/bin/zsh -i -c '{cmd}'" -rnow
+# bindsym $mod+space exec rofi -show combi -run-command "/bin/zsh -i -c '{cmd}'" -rnow
+bindsym $mod+space exec --no-startup-id "rofi -show drun -show-icons -levenshtein-sort"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -129,30 +147,52 @@ bindsym $mod+l workspace next_on_output
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+bindsym $mod+Shift+p exec --no-startup-id polybar-msg cmd restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym XF86Launch5 exec lock
-bindsym XF86Launch6 exec playerctl play-pause
-bindsym XF86Tools exec maim --hidecursor -s --format=png ~/images/screenshots/$(date +%F-%T).png
-bindsym Ctrl+XF86Tools exec maim --hidecursor -s --format=png /dev/stdout | copyq write image/png -
-bindsym $mod+End exec playerctl next
-bindsym $mod+Home exec playerctl previous
 
-exec --no-startup-id xrdb .Xresources
+
+bindsym --release $altgr+h    exec --no-startup-id xdotool key --clearmodifiers Left
+bindsym --release $altgr+j    exec --no-startup-id xdotool key --clearmodifiers Down
+bindsym --release $altgr+k    exec --no-startup-id xdotool key --clearmodifiers Up
+bindsym --release $altgr+l    exec --no-startup-id xdotool key --clearmodifiers Right
+
+# bindsym XF86Launch5                 exec lock
+# bindsym XF86Launch6                 exec playerctl play-pause
+# bindsym XF86Tools                   exec maim --hidecursor -s --format=png ~/images/screenshots/$(date +%F-%T).png
+bindsym Ctrl+XF86Tools              exec maim --hidecursor -s --format=png /dev/stdout | copyq write image/png -
+bindsym $mod+End                    exec playerctl next
+bindsym $mod+Home                   exec playerctl previous
+
+
+bindsym XF86MonBrightnessUp         exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown       exec --no-startup-id xbacklight -dec 10
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume        exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume        exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute               exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Touchpad controls
+# bindsym XF86TouchpadToggle          exec /some/path/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+# bindsym XF86AudioPlay               exec playerctl play
+# bindsym XF86AudioPause              exec playerctl pause
+# bindsym XF86AudioNext               exec playerctl next
+# bindsym XF86AudioPrev               exec playerctl previous
+
+# Autostart
+exec --no-startup-id xmodmap /home/dulnan/.Xmodmap
 exec --no-startup-id compton --config ~/dotfiles/compton/.compton.conf
-exec --no-startup-id polybar example
 exec --no-startup-id copyq
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xbanish
 exec --no-startup-id setxkbmap ch
-exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id setxkbmap -option altwin:swap_lalt_lwin
+exec --no-startup-id xrdb /home/dulnan/.Xresources
+exec --no-startup-id polybar -r example
+exec --no-startup-id xmodmap /home/dulnan/.Xmodmap
 
-
-exec --no-startup-id i3-msg 'workspace 1; exec spotify'
-exec --no-startup-id i3-msg 'workspace 2; exec slack'
-exec --no-startup-id i3-msg 'workspace 2; exec telegram-desktop'
-exec --no-startup-id i3-msg 'workspace 41; exec urxvt'
-exec --no-startup-id i3-msg 'workspace 41; exec urxvt'
-
-# vim:filetype=i3
+# vim:filetype=i3config
