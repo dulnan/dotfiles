@@ -1,86 +1,70 @@
-!
-! Generated with :
-! XRDB2Xreources.py
-!
-*.foreground:  #e6e1cf
-*.background:  #0f1419
-*.cursorColor: #f29718
-!
-! Black
-*.color0:      #000000
-*.color8:      #323232
-!
-! Red
-*.color1:      #ff3333
-*.color9:      #ff6565
-!
-! Green
-*.color2:      #b8cc52
-*.color10:     #eafe84
-!
-! Yellow
-*.color3:      #e7c547
-*.color11:     #fff779
-!
-! Blue
-*.color4:      #36a3d9
-*.color12:     #68d5ff
-!
-! Magenta
-*.color5:      #f07178
-*.color13:     #ffa3aa
-!
-! Cyan
-*.color6:      #95e6cb
-*.color14:     #c7fffd
-!
-! White
-*.color7:      #ffffff
-*.color15:     #ffffff
-!
-! Bold, Italic, Underline
-*.colorBD:     #e6e1cf
-!*.colorIT:
-!*.colorUL:
+! ------------------------------------------------------------------------------
+!  Colors
+! ------------------------------------------------------------------------------
 
-
-rofi.auto-select: false
-rofi.show-match: false
-
+#define base00 #000000
+#define base01 #2e3c43
+#define base02 #314549
+#define base03 #546e7a
+#define base04 #b2ccd6
+#define base05 #eeffff
+#define base06 #eeffff
+#define base07 #ffffff
+#define base08 #f07178
+#define base09 #f78c6c
+#define base0A #ffcb6b
+#define base0B #c3e88d
+#define base0C #89ddff
+#define base0D #82aaff
+#define base0E #c792ea
+#define base0F #ff5370
 
 ! ------------------------------------------------------------------------------
-! Mouse cursor stuff
+!  URxvt
 ! ------------------------------------------------------------------------------
-Xcursor.theme: Adwaita
-Xcursor.size: 18
 
-! ------------------------------------------------------------------------------
-! urxvt stuff
-! ------------------------------------------------------------------------------
-!! General URxvt settings
-URxvt.depth:        32
-URxvt.scrollBar:    false
-URxvt.saveLines: 10000
-URxvt.internalBorder: 8
+*foreground:   base05
+! *background:   base00
+*background:   #000000
+*cursorColor:  base05
 
-URxvt.intensityStyles: true
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
 
-!! Font settings
-! Font size is determined on launch in ~/.config/i3/scripts/launchterm.sh
-URxvt.font:     		xft:Fira Code Retina:style=Regular:size=10:antialias=true
-URxvt.boldFont:     xft:Fira Code:style=Bold:size=10:antialias=true
+*color8:       base03
+*color9:       base09
+*color10:      base01
+*color11:      base02
+*color12:      base04
+*color13:      base06
+*color14:      base0F
+*color15:      base07
 
-URxvt.letterSpace: 	-0
-URxvt.lineSpace: 	-3
 
-!! Load perl extentions
-URxvt.perl-ext-common: default,matcher,font-size
+URxvt.cursorBlink : 0
 
-!! Open links with Ctrl+left mouse in firefox
-URxvt.url-launcher: /usr/bin/firefox
-URxvt.matcher.button: C1
+URxvt.lineSpace           : 1
+URxvt.letterSpace         : 0
+URxvt.scrollBar           : false
+URxvt.internalBorder      : 28
+URxvt.cursorUnderline     : false
+URxvt.geometry            : 70x35
+URxvt.thickness           : 5
+URxvt.titleBar            : false
+URxvt.intensityStyles     : false
 
-!! Change font size on Control-Plus/Minus
+
+URxvt.perl-ext-common : default,matcher,font-size
+URxvt.url-launcher    : firefox
+URxvt.matcher.button  : C1
+
+
 URxvt.keysym.C-KP_Add:     font-size:increase
 URxvt.keysym.C-KP_Subtract:   font-size:decrease
 URxvt.keysym.C-S-Up:   font-size:incglobal
@@ -88,21 +72,31 @@ URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.keysym.C-equal:  font-size:reset
 URxvt.keysym.C-slash:  font-size:show
 
+! urxvt*depth: 32
+! urxvt*background:  [97]#0f1419
 
-! Fonts {{{
-Xft.dpi:       150
+rofi.auto-select: false
+rofi.show-match: false
+
+! ------------------------------------------------------------------------------
+! Mouse cursor stuff
+! ------------------------------------------------------------------------------
+Xcursor.theme: Adwaita
+Xcursor.size: 18
+
+
+Xft.dpi:       144
 Xft.antialias: true
-Xft.hinting:   true
-Xft.rgba:      rgb
-Xft.hintstyle: hintslight
-Xft.lcdfilter: hintslight
-! }}}
+! Xft.hinting:   true
+! Xft.rgba:      rgb
+! Xft.hintstyle: hintslight
+! Xft.lcdfilter: hintslight
 
-!URxvt*inheritPixmap: true
-! URxvt*.transparent: true
-! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
-! URxvt*.shading: 200
 
-urxvt*depth: 32
-! urxvt*background: rgba:0000/0000/0200/c800
-urxvt*background:  [97]#0f1419
+! Xft.autohint: 0
+! Xft.lcdfilter: lcddefault
+! Xft.hintstyle: hintslight
+!Xft.hinting: 2
+! Xft.rgba: rgb
+!
+

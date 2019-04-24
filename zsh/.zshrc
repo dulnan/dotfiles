@@ -1,56 +1,21 @@
-platform='unknown'
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-   platform='linux'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-   platform='macos'
-fi
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:/opt/anaconda/bin:/home/dulnan/.local/bin:$PATH
 
 export PATH=/home/dulnan/bin:$PATH
 export PATH=/home/go/bin:$PATH
 export PATH=~/Library/Python/3.6/bin:$PATH
-export PATH="$PATH:/Users/dulnan/Library/Python/2.7/bin"
 
-#source ~/.bash_profile
-export VISUAL=vim
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/dulnan/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
-zstyle ':completion:*' menu select
-setopt COMPLETE_ALIASES
-
-
-autoload -Uz promptinit
-promptinit
-
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-#ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs status root_indicator  time)
-POWERLEVEL9K_CONTEXT_TEMPLATE="%"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
+
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 
@@ -72,7 +37,7 @@ DISABLE_AUTO_UPDATE="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -86,7 +51,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux composer fasd npm sudo systemd vagrant web-search wd)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions wd)
 
 
 # User configuration
@@ -103,8 +68,11 @@ plugins=(git archlinux composer fasd npm sudo systemd vagrant web-search wd)
 #   export EDITOR='mvim'
 # fi
 
+export EDITOR='nvim'
+export GIT_EDITOR='nvim'
+
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -116,39 +84,56 @@ plugins=(git archlinux composer fasd npm sudo systemd vagrant web-search wd)
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-alias nautilus="gtk3-nocsd nautilus"
-alias chromium="gtk3-nocsd chromium --force-device-scale-factor=1.45"
-alias slack="gtk3-nocsd slack --force-device-scale-factor=1"
-alias spotify="spotify --force-device-scale-factor=1"
-alias gitkraken="gitkraken --force-device-scale-factor=1"
-alias ls="ls -la"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias vim='nvim'
-if [[ $platform == 'linux' ]]; then
-  if [[ ! -d $ZSH_CACHE_DIR ]]; then
-    mkdir $ZSH_CACHE_DIR
-  fi
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
 fi
 
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec startx
-fi
-
-
-if [[ $platform == 'linux' ]]; then
-  source /usr/share/nvm/init-nvm.sh
-fi
-
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source $HOME/.cargo/env
+alias nemo="gtk3-nocsd nemo"
+alias slack="gtk3-nocsd slack --force-device-scale-factor=1"
+alias spotify="spotify --force-device-scale-factor=1.5"
+alias gitkraken="gitkraken --force-device-scale-factor=1.5"
+alias ls="ls -la"
 
-export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/init-nvm.sh
 
-bindkey -e
-bindkey '^[[1;9C' forward-word
-bindkey '^[[1;9D' backward-word
 
-ZSH_THEME="spaceship"
+export TERM=xterm-256color
+
+ZSH_THEME="simple"
+
+
+DISABLE_LS_COLORS="false"
+ENABLE_CORRECTION="false"
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+
+set bell-style none
+
+
+
+# Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(cat ~/.cache/wal/sequences &)
+
+# Alternative (blocks terminal for 0-3ms)
+cat ~/.cache/wal/sequences
+
+# To add support for TTYs this line can be optionally added.
+source ~/.cache/wal/colors-tty.sh
+
+
+

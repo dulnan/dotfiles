@@ -1,0 +1,7 @@
+xrdb /home/dulnan/.Xresources
+xmodmap /home/dulnan/.Xmodmap
+setxkbmap ch
+xmodmap /home/dulnan/.Xmodmap
+
+wal -R
+exec i3
