@@ -1,30 +1,70 @@
 {
-    "workbench.iconTheme": "eq-material-theme-icons",
-    "workbench.colorTheme": "Ayu Dark",
-    "editor.fontSize": 14,
-    "vim.hlsearch": true,
-    "editor.tabSize": 2,
-    "vim.enableNeovim": true,
-    "vim.neovimPath": "/usr/local/bin/nvim",
-    "vim.insertModeKeyBindings": [
+  "workbench.iconTheme": "eq-material-theme-icons",
+  "workbench.colorTheme": "Ayu Mirage",
+  "editor.rulers": [80, 120],
+  "vim.hlsearch": true,
+  "editor.tabSize": 2,
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-n>"],
+      "after": [],
+      "commands": [
         {
-            "before": ["j", "k"],
-            "after": ["<Esc>"]
+          "command": ":nohl",
+          "args": []
         }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before":["<C-n>"],
-            "after":[],
-            "commands": [
-                {
-                    "command": ":nohl",
-                    "args": []
-                }
-            ]
-        },
-    ],
-    "editor.minimap.enabled": false,
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false
+      ]
+    }
+  ],
+  // "eslint.validate": [
+  //     "javascript",
+  //     "javascriptreact",
+  //     "vue",
+  //     { "language": "vue", "autoFix": true }
+  // ],
+  "editor.minimap.enabled": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "window.zoomLevel": 0,
+  "editor.fontFamily": "Input Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 14,
+  "editor.formatOnType": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "vetur.validation.template": false,
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier",
+
+  "prettier.eslintIntegration": true,
+  "eslint.options": { "extensions": [".html", ".js", ".vue", ".jsx"] },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+
+  "javascript.validate.enable": false,
+  "javascript.format.enable": false,
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
+  "eslint.autoFixOnSave": true,
+  "editor.formatOnSave": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

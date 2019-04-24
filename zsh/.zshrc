@@ -9,6 +9,7 @@ fi
 export PATH=/home/dulnan/bin:$PATH
 export PATH=/home/go/bin:$PATH
 export PATH=~/Library/Python/3.6/bin:$PATH
+export PATH="$PATH:/Users/dulnan/Library/Python/2.7/bin"
 
 #source ~/.bash_profile
 export VISUAL=vim
@@ -123,8 +124,10 @@ alias gitkraken="gitkraken --force-device-scale-factor=1"
 alias ls="ls -la"
 
 alias vim='nvim'
-if [[ ! -d $ZSH_CACHE_DIR ]]; then
-  mkdir $ZSH_CACHE_DIR
+if [[ $platform == 'linux' ]]; then
+  if [[ ! -d $ZSH_CACHE_DIR ]]; then
+    mkdir $ZSH_CACHE_DIR
+  fi
 fi
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
@@ -141,5 +144,11 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source $HOME/.cargo/env
+
+export NVM_DIR="$HOME/.nvm"
+
+bindkey -e
+bindkey '^[[1;9C' forward-word
+bindkey '^[[1;9D' backward-word
 
 ZSH_THEME="spaceship"

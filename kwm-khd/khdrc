@@ -45,8 +45,8 @@ cmd + ctrl - f                  :   kwmc tiling::window -z fullscreen
 # cmd - left                      :   chunkc window -d prev
 # cmd - right                     :   chunkc window -d next
 
-cmd - h                         :   chunkc tiling::desktop --focus prev
-cmd - l                         :   chunkc tiling::desktop --focus next
+# cmd - h                         :   chunkc tiling::desktop --focus prev
+# cmd - l                         :   chunkc tiling::desktop --focus next
 
 # make window floatable
 cmd + ctrl + alt - f            :   chunkc tiling::window --toggle float
