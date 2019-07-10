@@ -44,7 +44,7 @@
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.js": "prettier",
 
-  "prettier.eslintIntegration": true,
+  // "prettier.eslintIntegration": true,
   "eslint.options": { "extensions": [".html", ".js", ".vue", ".jsx"] },
   "eslint.validate": [
     "javascript",
@@ -55,16 +55,27 @@
     }
   ],
 
-  "javascript.validate.enable": false,
-  "javascript.format.enable": false,
+  // "javascript.validate.enable": false,
+  // "javascript.format.enable": true,
   "prettier.singleQuote": true,
   "prettier.semi": false,
-  "eslint.autoFixOnSave": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "glsl-linter.validatorPath": "/usr/local/bin/glslangValidator",
+  "glsl-linter.fileExtensions": {
+    ".fs.glsl": "frag",
+    ".vs.glsl": "vert",
+    ".tes.glsl": "tese",
+    ".tcs.glsl": "tesc",
+    ".gs.glsl": "geom"
   }
 }

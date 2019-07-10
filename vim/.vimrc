@@ -21,14 +21,14 @@ set ruler
 set laststatus=2
 set nocursorline
 
-set omnifunc=syntaxcomplete#Complete
-set completefunc=LanguageClient#complete
-
-highlight EndOfBuffer ctermfg=black ctermbg=black
+" highlight EndOfBuffer ctermfg=black ctermbg=black
 
 syntax sync fromstart
 
+set hidden
 set redrawtime=10000
+set updatetime=300
+set cmdheight=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " INDENTATION
@@ -43,6 +43,13 @@ set backspace=indent,eol,start
 set smarttab
 set expandtab
 set list
+
+set listchars=
+set listchars+=tab:░\ 
+set listchars+=trail:·
+set listchars+=extends:»
+set listchars+=precedes:«
+set listchars+=nbsp:⣿
 
 filetype indent on
 
@@ -62,8 +69,6 @@ set ttimeoutlen=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:mapleader = ","
 let g:localmapleader = "\\"
-
-nmap <F13> :TagbarToggle<CR>
 
 " move the current line below
 nnoremap <M-j> ddp
@@ -125,109 +130,64 @@ inoremap <right> <nop>
 
 nnoremap <C-w>v :vnew<CR>
 
-"
-" Autocommands
-"
+nnoremap <leader>t :terminal<CR>
+nnoremap <leader>b :Gblame<CR>
+nnoremap <leader>a :Ag<CR>
+nnoremap <leader>j :JsDoc<CR>
+nnoremap <leader>q :qall<CR>
+tnoremap jk <C-\><C-n>
 
-" Force filetype
-"autocmd BufRead,BufNewFile .eslintrc setfiletype json
-"autocmd BufRead,BufNewFile .jshintrc setfiletype json
-"au BufReadPost *.theme set syntax=php
-"au BufReadPost *.module set syntax=php
-
-" Omni-Completion tip window to close when a selection is
-" made, these lines close it on movement in insert mode or when leaving
-" insert mode
-"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-
-
+" Enable php syntax for drupal theme and module files.
 au BufReadPost *.theme set syntax=php
 au BufReadPost *.module set syntax=php
 au BufReadPost *.lock set syntax=json
-
-autocmd BufEnter,InsertLeave * :syntax sync fromstart
 
 augroup markdown
     au!
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
 
-
 " Loads plugins def and config
 
 " Start plugins definition
 call plug#begin($HOME.'/.local/share/nvim/plugged')
 
-Plug 'maksimr/vim-jsbeautify'
 
-Plug 'mboughaba/i3config.vim'
+" Plug 'majutsushi/tagbar'
+" Plug 'hushicai/tagbar-javascript.vim'
 
-Plug 'scrooloose/nerdtree'
-Plug 'majutsushi/tagbar'
-Plug 'hushicai/tagbar-javascript.vim'
-Plug 'wesQ3/vim-windowswap'
+" Plug 'reedes/vim-pencil'
+" Plug 'tpope/vim-markdown'
+" Plug 'jtratner/vim-flavored-markdown'
+" Plug 'kablamo/vim-git-log'
+" Plug 'gregsexton/gitv'
+" Plug 'tpope/vim-fugitive'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'phpvim/phpcd.vim'
+" Plug 'tobyS/pdv'
 
-Plug 'godlygeek/tabular'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ryanoasis/vim-devicons'
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'editorconfig/editorconfig-vim'
+" Plug 'bronson/vim-trailing-whitespace'
 
-Plug 'reedes/vim-pencil'
-Plug 'tpope/vim-markdown'
-Plug 'jtratner/vim-flavored-markdown'
-Plug 'kablamo/vim-git-log'
-Plug 'gregsexton/gitv'
-Plug 'tpope/vim-fugitive'
+" Plug 'Chiel92/vim-autoformat'
+" Plug 'elzr/vim-json'
 
-Plug 'phpvim/phpcd.vim'
-Plug 'tobyS/pdv'
+" Plug 'jeroenbourgois/vim-actionscript'
 
-Plug 'ryanoasis/vim-devicons'
-
-Plug 'scrooloose/nerdcommenter'
-
-Plug 'editorconfig/editorconfig-vim'
-Plug 'bronson/vim-trailing-whitespace'
-
-Plug 'Chiel92/vim-autoformat'
-Plug 'elzr/vim-json'
-
-Plug 'jeroenbourgois/vim-actionscript'
-
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-
-Plug 'w0rp/ale'
-" Plug 'posva/vim-vue'
-" Plug 'pangloss/vim-javascript' , { 'for': ['javascript', 'javascript.jsx', 'html', 'vue'] }
-
-Plug 'storyn26383/vim-vue'
-Plug 'pangloss/vim-javascript'
-Plug 'hail2u/vim-css3-syntax'
-
-Plug 'itchyny/lightline.vim'
-Plug 'ayu-theme/ayu-vim'
-
-Plug 'dylanaraps/wal.vim'
+" Plug 'dylanaraps/wal.vim'
 
 ""Plug 'junegunn/vim-easy-align'
 "Plug 'terryma/vim-multiple-cursors'
 ""Plug 'maxbrunsfeld/vim-yankstack'
 "Plug 'tpope/vim-surround'
 ""Plug 'othree/yajs.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
+" Plug 'othree/javascript-libraries-syntax.vim'
 "Plug 'hail2u/vim-css3-syntax'
-Plug 'cakebaker/scss-syntax.vim'
+" Plug 'cakebaker/scss-syntax.vim'
 "Plug 'csscomb/vim-csscomb'
-Plug 'othree/html5.vim'
+" Plug 'othree/html5.vim'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 ""Plug 'moll/vim-node'
 ""Plug 'syngan/vim-vimlint'
@@ -250,8 +210,162 @@ Plug 'heavenshell/vim-jsdoc'
 "Plug 'arcticicestudio/nord-vim'
 "Plug 'dracula/vim'
 "Plug 'PotatoesMaster/i3-vim-syntax'
-call plug#end()
 
+Plug 'storyn26383/vim-vue'
+Plug 'mboughaba/i3config.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+Plug 'Shougo/context_filetype.vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'itchyny/lightline.vim'
+Plug 'ntk148v/vim-horizon'
+Plug 'srcery-colors/srcery-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'othree/csscomplete.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tikhomirov/vim-glsl'
+Plug 'mhinz/vim-startify'
+Plug 'Shougo/denite.nvim'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-airline/vim-airline'
+Plug 'nelsyeung/twig.vim'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'ayu-theme/ayu-vim'
+Plug 'connorholyday/vim-snazzy'
+
+Plug 'mustache/vim-mustache-handlebars'
+
+call plug#end()
+set termguicolors
+set background=dark
+set t_Co=256
+" let ayucolor="dark"
+let ayucolor="mirage"
+colorscheme challenger_deep
+
+hi Normal guibg=NONE ctermbg=NONE
+hi Comment guifg=#444364
+hi LineNr guibg=#19162A
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: indentLine
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:indentLine_leadingSpaceEnabled = 1
+" let g:indentLine_leadingSpaceChar = '∙'
+let g:indentLine_char = '┆'
+let g:indentLine_first_char = '┆'
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: Startify
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:startify_custom_header = []
+
+let g:startify_lists = [
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          \ { 'type': 'commands',  'header': ['   Commands']       },
+          \ ]
+
+let g:startify_bookmarks = [
+          \ {'c': '~/.vimrc'},
+          \ {'z': '~/.zshrc'},
+          \ {'e': '~/Development/ch.migros.engagement-hub'},
+          \ {'m': '~/Development/ch.migros.karriere'},
+          \ {'s': '~/Development/shader.how'},
+          \ {'d': '~/Development/drawmote-client'},
+          \ {'o': '~/Development/oris-web'},
+          \ ]
+
+let g:startify_session_persistence = 1
+let g:startify_change_to_vcs_root = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: Lightline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+      " \ 'colorscheme': 'srcery',
+let g:lightline = {
+      \ 'colorscheme': 'challenger_deep',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: coc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+autocmd BufWritePost *.vue Prettier
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: deoplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS noci
+
+" let g:deoplete#enable_at_startup = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: Javascript
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:javascript_plugin_jsdoc = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: Windowswap
@@ -266,25 +380,23 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: NERD Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let NERDTreeShowHidden=1
 map <C-t> :NERDTreeToggle<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGIN: Tagbar
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-m> :TagbarToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: FZF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-" Default fzf layout
+" Default zf layout
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
 
@@ -315,83 +427,8 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGIN: NerdCommenter 
+" PLUGIN: Prettier
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-
-"noremap <c-o> :call NERDComment(0, "Toggle")<cr>
-nmap <c-o> <plug>NERDCommenterToggle
-vmap <c-o> <plug>NERDCommenterToggle gv
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGIN: YouCompleteMe
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Start autocompletion after 4 chars
-let g:ycm_min_num_of_chars_for_completion = 4
-let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_enable_diagnostic_highlighting = 0
-" Don't show YCM's preview window [ I find it really annoying ]
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGIN: Vue
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGIN: JsBeaufity
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>= :call JsBeautify()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: JsDoc
@@ -404,6 +441,7 @@ let g:jsdoc_enable_es6 = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: ctrlp
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -419,10 +457,93 @@ if executable('ag')
   let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 endif
 
-" set t_Co=256
-highlight Normal ctermfg=grey ctermbg=black
-colorscheme wal
 
-let g:lightline = {
-      \ 'colorscheme': 'wal',
-      \ }
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FUNCTION: Search and replace
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! GlobalSearchReplace()
+  call inputsave()
+  let folder    = input('Folder:   ', '', 'dir')
+
+  let extension = expand('%:e')
+  if extension != ''
+    let pattern_default = '**/*.' . extension
+  else
+    let pattern_default = '**/*.*'
+  endif
+
+  let pattern   = input('Pattern:  ', pattern_default)
+
+  let search    = input('Search:   ', '')
+  let replace   = input('Replace:  ')
+  call inputrestore()
+
+  execute 'args ' . folder . pattern
+  set nomagic
+  execute 'argdo %s/'.search.'/'.replace.'/g'
+  set magic
+endfunction
+
+command SearchReplace call GlobalSearchReplace()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CONFIG: Veonim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if exists('veonim')
+
+" extensions for web dev
+let g:vscode_extensions = [
+  \'vscode.typescript-language-features',
+  \'vscode.css-language-features',
+  \'vscode.html-language-features',
+  \'vscode.json-language-features',
+  \'vscode.markdown-language-features',
+  \'vscode.php-language-features',
+  \'octref.vetur',
+  \'christian-kohler.npm-intellisense',
+  \'mrmlnc.vscode-scss',
+  \'slevesque.shader',
+  \'mblode.twig-language-2',
+\]
+
+" multiple nvim instances
+nno <silent> <c-t>c :Veonim vim-create<cr>
+nno <silent> <c-g> :Veonim vim-switch<cr>
+nno <silent> <c-t>, :Veonim vim-rename<cr>
+
+" workspace functions
+nno <silent> ,f :Veonim files<cr>
+nno <silent> ,e :Veonim explorer<cr>
+nno <silent> ,b :Veonim buffers<cr>
+nno <silent> ,d :Veonim change-dir<cr>
+"or with a starting dir: nno <silent> ,d :Veonim change-dir ~/proj<cr>
+
+" searching text
+nno <silent> <space>fw :Veonim grep-word<cr>
+vno <silent> <space>fw :Veonim grep-selection<cr>
+nno <silent> <space>fa :Veonim grep<cr>
+nno <silent> <space>ff :Veonim grep-resume<cr>
+nno <silent> <space>fb :Veonim buffer-search<cr>
+
+" language features
+nno <silent> sr :Veonim rename<cr>
+nno <silent> sd :Veonim definition<cr>
+nno <silent> si :Veonim implementation<cr>
+nno <silent> st :Veonim type-definition<cr>
+nno <silent> sf :Veonim references<cr>
+nno <silent> sh :Veonim hover<cr>
+nno <silent> sl :Veonim symbols<cr>
+nno <silent> so :Veonim workspace-symbols<cr>
+nno <silent> sq :Veonim code-action<cr>
+nno <silent> sk :Veonim highlight<cr>
+nno <silent> sK :Veonim highlight-clear<cr>
+nno <silent> ,n :Veonim next-usage<cr>
+nno <silent> ,p :Veonim prev-usage<cr>
+nno <silent> sp :Veonim show-problem<cr>
+nno <silent> <c-n> :Veonim next-problem<cr>
+nno <silent> <c-p> :Veonim prev-problem<cr>
+
+endif
+
