@@ -128,7 +128,7 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-nnoremap <C-w>v :vnew<CR>
+nnoremap <silent> <C-w>v :vnew<CR>
 
 nnoremap <leader>t :terminal<CR>
 nnoremap <leader>b :Gblame<CR>
@@ -155,89 +155,92 @@ call plug#begin($HOME.'/.local/share/nvim/plugged')
 
 " Plug 'majutsushi/tagbar'
 " Plug 'hushicai/tagbar-javascript.vim'
-
 " Plug 'reedes/vim-pencil'
 " Plug 'tpope/vim-markdown'
 " Plug 'jtratner/vim-flavored-markdown'
 " Plug 'kablamo/vim-git-log'
 " Plug 'gregsexton/gitv'
 " Plug 'tpope/vim-fugitive'
-
 " Plug 'phpvim/phpcd.vim'
 " Plug 'tobyS/pdv'
-
 " Plug 'ryanoasis/vim-devicons'
-
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'bronson/vim-trailing-whitespace'
-
 " Plug 'Chiel92/vim-autoformat'
 " Plug 'elzr/vim-json'
-
 " Plug 'jeroenbourgois/vim-actionscript'
-
 " Plug 'dylanaraps/wal.vim'
-
-""Plug 'junegunn/vim-easy-align'
-"Plug 'terryma/vim-multiple-cursors'
-""Plug 'maxbrunsfeld/vim-yankstack'
-"Plug 'tpope/vim-surround'
-""Plug 'othree/yajs.vim'
+" Plug 'junegunn/vim-easy-align'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'maxbrunsfeld/vim-yankstack'
+" Plug 'tpope/vim-surround'
+" Plug 'othree/yajs.vim'
 " Plug 'othree/javascript-libraries-syntax.vim'
-"Plug 'hail2u/vim-css3-syntax'
-" Plug 'cakebaker/scss-syntax.vim'
-"Plug 'csscomb/vim-csscomb'
+Plug 'hail2u/vim-css3-syntax'
+" Plug 'csscomb/vim-csscomb'
 " Plug 'othree/html5.vim'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-""Plug 'moll/vim-node'
-""Plug 'syngan/vim-vimlint'
-""Plug 'ynkdir/vim-vimlparser'
-""Plug 'mattn/emmet-vim'
-""Plug 'morhetz/gruvbox'
-"Plug 'fcpg/vim-fahrenheit'
-""Plug 'ayu-theme/ayu-vim'
-Plug 'heavenshell/vim-jsdoc'
-"Plug 'plasticboy/vim-markdown'
-"Plug 'lumiliet/vim-twig'
-"Plug 'joonty/vdebug'
-"Plug 'majutsushi/tagbar'
-"Plug 'pangloss/vim-javascript'
-"Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'shawncplus/phpcomplete.vim'
-"Plug 'mustache/vim-mustache-handlebars'
-"Plug 'danhodos/vim-comb'
-"Plug 'chrisbra/csv.vim'
-"Plug 'arcticicestudio/nord-vim'
-"Plug 'dracula/vim'
-"Plug 'PotatoesMaster/i3-vim-syntax'
-
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'moll/vim-node'
+" Plug 'syngan/vim-vimlint'
+" Plug 'ynkdir/vim-vimlparser'
+" Plug 'mattn/emmet-vim'
+" Plug 'morhetz/gruvbox'
+" Plug 'fcpg/vim-fahrenheit'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'plasticboy/vim-markdown'
+Plug 'lumiliet/vim-twig'
+" Plug 'joonty/vdebug'
+" Plug 'majutsushi/tagbar'
+Plug 'pangloss/vim-javascript'
+" Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'shawncplus/phpcomplete.vim'
+" Plug 'mustache/vim-mustache-handlebars'
+" Plug 'danhodos/vim-comb'
+" Plug 'chrisbra/csv.vim'
+" Plug 'arcticicestudio/nord-vim'
+" Plug 'dracula/vim'
+" Plug 'PotatoesMaster/i3-vim-syntax'
+" Plug 'storyn26383/vim-vue'
+" Plug 'scrooloose/nerdtree'
 Plug 'storyn26383/vim-vue'
-Plug 'mboughaba/i3config.vim'
-Plug 'scrooloose/nerdtree'
+" Plug 'tomtom/tcomment_vim'
+Plug 'cakebaker/scss-syntax.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'itchyny/lightline.vim'
+" Plug 'leafOfTree/vim-vue-plugin'
+" Plug 'tikhomirov/vim-glsl'
+" Plug 'Shougo/denite.nvim'
+" Plug 'plasticboy/vim-markdown'
+" Plug 'nelsyeung/twig.vim'
+" Plug 'StanAngeloff/php.vim'
+" Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-commentary'
+" Plug 'tyru/caw.vim'
+
+" Plug 'Shougo/context_filetype.vim'
+
+Plug 'heavenshell/vim-jsdoc'
+Plug 'othree/jsdoc-syntax.vim'
+Plug 'Shougo/defx.nvim'
+Plug 'kristijanhusak/defx-icons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-commentary'
-Plug 'Shougo/context_filetype.vim'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'itchyny/lightline.vim'
-Plug 'ntk148v/vim-horizon'
-Plug 'srcery-colors/srcery-vim'
+" Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'othree/csscomplete.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tikhomirov/vim-glsl'
 Plug 'mhinz/vim-startify'
-Plug 'Shougo/denite.nvim'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
-Plug 'nelsyeung/twig.vim'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'ayu-theme/ayu-vim'
-Plug 'connorholyday/vim-snazzy'
+Plug 'vim-vdebug/vdebug'
+" Plug 'posva/vim-vue'
 
-Plug 'mustache/vim-mustache-handlebars'
+" Themes
+Plug 'ntk148v/vim-horizon'
+Plug 'srcery-colors/srcery-vim'
+Plug 'connorholyday/vim-snazzy'
+Plug 'ayu-theme/ayu-vim'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 call plug#end()
 set termguicolors
@@ -250,6 +253,12 @@ colorscheme challenger_deep
 hi Normal guibg=NONE ctermbg=NONE
 hi Comment guifg=#444364
 hi LineNr guibg=#19162A
+
+let g:polyglot_disabled = ['vue']
+
+let g:LanguageClient_serverCommands = {
+    \ 'vue': ['vls']
+    \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: indentLine
@@ -347,19 +356,22 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-autocmd BufWritePost *.vue Prettier
+" autocmd BufWritePost *.vue Prettier
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: vim-vue
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" autocmd FileType vue syntax sync fromstart
+" autocmd BufReadPost,BufNewFile *.vue setlocal filetype=vue
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: deoplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS noci
-
 " let g:deoplete#enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -376,13 +388,75 @@ let g:javascript_plugin_jsdoc = 1
 " - Press <leader>ww again
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: Defx
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:loaded_netrwPlugin = 1 " Disable netrw.vim
+
+" autocmd FileType defx call s:defx_my_settings()
+
+augroup defxConfig
+  autocmd!
+  autocmd FileType defx call s:defx_my_settings()
+augroup END
+
+
+function! s:defx_my_settings() abort
+
+  " Open commands
+  " nnoremap <silent><buffer><expr> <CR> defx#do_action('open')
+  nnoremap <silent><buffer><expr> <CR> defx#do_action('open', 'wincmd w \| drop')
+  nnoremap <silent><buffer><expr> l defx#do_action('open')
+  nnoremap <silent><buffer><expr> v defx#do_action('open', 'vsplit')
+  " Preview current file
+  " nnoremap <silent><buffer><expr> s defx#do_action('open', 'pedit')
+
+  " File manipulation
+  nnoremap <silent><buffer><expr> K defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> <Del> defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r defx#do_action('rename')
+  nnoremap <silent><buffer><expr> yy defx#do_action('copy')
+  nnoremap <silent><buffer><expr> dd defx#do_action('move')
+  nnoremap <silent><buffer><expr> pp defx#do_action('paste')
+
+  "Navigation
+  nnoremap <silent><buffer><expr> - defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> h defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> ~ defx#do_action('cd', [getcwd()])
+
+  " Miscellaneous actions
+  nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> q defx#do_action('quit')
+  nnoremap <silent><buffer><expr> x defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yp defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> <C-g> defx#do_action('print')
+  nnoremap <silent><buffer><expr> <C-l> defx#do_action('redraw') . ':nohlsearch<cr>:syntax sync fromstart<cr><c-l>'
+
+  nnoremap <silent><buffer><expr><nowait> <Space> defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> * defx#do_action('toggle_select_all')
+
+  nnoremap <silent><buffer><expr> C defx#do_action('toggle_columns', 'mark:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S defx#do_action('toggle_sort', 'time')
+
+  " nnoremap <silent><buffer><expr>e defx#do_action('call', 'DefxExternalExplorer')
+  nnoremap <silent><buffer><expr> e defx#do_action('call', 'OpenRanger')
+endfunction
+
+" nnoremap <silent> <leader>o :call OpenRanger()<cr>
+nnoremap <silent> <C-t> :Defx `expand('%:p:h')` -new -show-ignored-files -search=`expand('%:p')` -columns=icons:indent:filename:type<CR>
+nnoremap <Leader>- :Defx -split=vertical -winwidth=50 -direction=topleft<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: NERD Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let NERDTreeShowHidden=1
-map <C-t> :NERDTreeToggle<CR>
+" let NERDTreeShowHidden=1
+" map <C-t> :NERDTreeToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -425,10 +499,20 @@ let g:fzf_colors =
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+" map <C-p> :Files<CR>
+nnoremap <silent> <C-p> :call fzf#run({ 'source': 'ag -g ""', 'sink': 'e', 'window': 'enew' })<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: Prettier
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mapping '/remote/path' : '/local/path'
+let g:vdebug_options = {}
+let g:vdebug_options.path_maps = {
+      \  '/var/www/ch.migros.karriere/web' : '/Users/dulnan/Development/ch.migros.karriere/web',
+      \  '/var/www/oris-web' : '/Users/dulnan/Development/oris-web',
+      \}
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: JsDoc
@@ -451,10 +535,10 @@ if executable('ag')
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
-  let g:ctrlp_path_nolim = 1
+  let g:ctrlp_path_nolim = 0
   let g:ctrlp_match_natural_name = 1
   let g:ctrlp_working_path_mode = 0
-  let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+  let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn|sql))$'
 endif
 
 
@@ -485,65 +569,3 @@ function! GlobalSearchReplace()
 endfunction
 
 command SearchReplace call GlobalSearchReplace()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CONFIG: Veonim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-if exists('veonim')
-
-" extensions for web dev
-let g:vscode_extensions = [
-  \'vscode.typescript-language-features',
-  \'vscode.css-language-features',
-  \'vscode.html-language-features',
-  \'vscode.json-language-features',
-  \'vscode.markdown-language-features',
-  \'vscode.php-language-features',
-  \'octref.vetur',
-  \'christian-kohler.npm-intellisense',
-  \'mrmlnc.vscode-scss',
-  \'slevesque.shader',
-  \'mblode.twig-language-2',
-\]
-
-" multiple nvim instances
-nno <silent> <c-t>c :Veonim vim-create<cr>
-nno <silent> <c-g> :Veonim vim-switch<cr>
-nno <silent> <c-t>, :Veonim vim-rename<cr>
-
-" workspace functions
-nno <silent> ,f :Veonim files<cr>
-nno <silent> ,e :Veonim explorer<cr>
-nno <silent> ,b :Veonim buffers<cr>
-nno <silent> ,d :Veonim change-dir<cr>
-"or with a starting dir: nno <silent> ,d :Veonim change-dir ~/proj<cr>
-
-" searching text
-nno <silent> <space>fw :Veonim grep-word<cr>
-vno <silent> <space>fw :Veonim grep-selection<cr>
-nno <silent> <space>fa :Veonim grep<cr>
-nno <silent> <space>ff :Veonim grep-resume<cr>
-nno <silent> <space>fb :Veonim buffer-search<cr>
-
-" language features
-nno <silent> sr :Veonim rename<cr>
-nno <silent> sd :Veonim definition<cr>
-nno <silent> si :Veonim implementation<cr>
-nno <silent> st :Veonim type-definition<cr>
-nno <silent> sf :Veonim references<cr>
-nno <silent> sh :Veonim hover<cr>
-nno <silent> sl :Veonim symbols<cr>
-nno <silent> so :Veonim workspace-symbols<cr>
-nno <silent> sq :Veonim code-action<cr>
-nno <silent> sk :Veonim highlight<cr>
-nno <silent> sK :Veonim highlight-clear<cr>
-nno <silent> ,n :Veonim next-usage<cr>
-nno <silent> ,p :Veonim prev-usage<cr>
-nno <silent> sp :Veonim show-problem<cr>
-nno <silent> <c-n> :Veonim next-problem<cr>
-nno <silent> <c-p> :Veonim prev-problem<cr>
-
-endif
-

@@ -1,7 +1,13 @@
 {
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptvue", "javascript-vue", "Vue", "Vue.js", "vue.js", "vue", "vuejs", "vetur", "javascript", "scss", "sass"],
-  "eslint.filetypes": ["javascript", "typescript", "javascriptvue", "vue"],
-  "eslint.autoFixOnSave": true
+  "coc.preferences.formatOnSaveFiletypes": ["css", "json", "Markdown", "Vue", "Vue.js", "vue.js", "vue", "vuejs", "vetur", "javascript", "scss", "sass"],
+  "eslint.filetypes": ["javascript", "typescript", "vue"],
+  "eslint.autoFixOnSave": true,
+  "prettier.formatterPriority": 10,
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.completion.useScaffoldSnippets": true,
+  "vetur.validation.template": true,
+  "vetur.experimental.templateInterpolationService": true,
+  "vetur.completion.autoImport": true
 }

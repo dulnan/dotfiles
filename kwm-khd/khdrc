@@ -23,8 +23,8 @@ cmd + alt - k : yabai -m window --resize top:0:-40 && yabai -m window --resize b
 cmd + alt - j : yabai -m window --resize bottom:0:40 && yabai -m window --resize top:0:40
 
 # focus window
-cmd + shift - h:   yabai -m window --focus west
-cmd + shift - l:   yabai -m window --focus east
+cmd + shift - h:   bash ~/Development/dotfiles/yabai/focus.sh west
+cmd + shift - l:   bash ~/Development/dotfiles/yabai/focus.sh east
 cmd + shift - k:   yabai -m window --focus north
 cmd + shift - j:   yabai -m window --focus south
 
