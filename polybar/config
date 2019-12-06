@@ -73,7 +73,7 @@ font-2 = Iosevka Nerd Font:style=Light:size=15:antialias=true;4
 
 modules-left = bspwm i3 xwindow
 modules-center = mpd
-modules-right = spotify volume memory cpu wlan eth broadband battery temperature date
+modules-right = spotify volume memory cpu wlan eth broadband battery0 battery1 temperature date
 
 tray-position = right
 tray-padding = 2
@@ -349,7 +349,7 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/battery]
+[module/battery0]
 inherit = module/defaults
 type = internal/battery
 battery = BAT0
@@ -380,6 +380,10 @@ animation-charging-2 = 
 animation-charging-font = 2
 animation-charging-foreground = ${colors.color8}
 animation-charging-framerate = 750
+
+[module/battery1]
+inherit = module/battery0
+battery = BAT1
 
 [module/temperature]
 inherit = module/defaults
