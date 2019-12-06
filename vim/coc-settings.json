@@ -1,13 +1,20 @@
 {
+  "suggest.noselect": true,
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "json", "Markdown", "Vue", "Vue.js", "vue.js", "vue", "vuejs", "vetur", "javascript", "scss", "sass"],
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "json", "Vue", "Vue.js", "vue.js", "vue", "vuejs", "vetur", "javascript", "scss", "sass"],
   "eslint.filetypes": ["javascript", "typescript", "vue"],
   "eslint.autoFixOnSave": true,
   "prettier.formatterPriority": 10,
+  "emmet.includeLanguages": {"vue-html": "html" },
+  "vetur.useWorkspaceDependencies": true,
+  "vetur.format.enable": true,
   "vetur.format.defaultFormatter.html": "prettier",
-  "vetur.completion.useScaffoldSnippets": true,
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.completion.useScaffoldSnippets": false,
   "vetur.validation.template": true,
-  "vetur.experimental.templateInterpolationService": true,
+  "vetur.experimental.templateInterpolationService": false,
+  "vetur.dev.vlsPath": "/usr/local/lib/node_modules/vue-language-server",
   "vetur.completion.autoImport": true
 }

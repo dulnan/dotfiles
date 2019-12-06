@@ -1,1 +1,3 @@
+prettier.formatFile
+tsserver.openTsServerLog
 eslint.executeAutofix

@@ -39,10 +39,11 @@
   "editor.formatOnType": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
 
-  "vetur.validation.template": false,
+  "vetur.validation.template": true,
   "vetur.format.defaultFormatter.scss": "prettier",
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.experimental.templateInterpolationService": true,
 
   // "prettier.eslintIntegration": true,
   "eslint.options": { "extensions": [".html", ".js", ".vue", ".jsx"] },

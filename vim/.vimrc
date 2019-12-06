@@ -1,7 +1,6 @@
 let MACENV = $MACENV
 
 filetype plugin on
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GENERAL SETTINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -29,6 +28,8 @@ set hidden
 set redrawtime=10000
 set updatetime=300
 set cmdheight=2
+
+set conceallevel=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " INDENTATION
@@ -67,7 +68,7 @@ set ttimeoutlen=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPPING
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:mapleader = ","
+let g:mapleader = "\<Space>"
 let g:localmapleader = "\\"
 
 " move the current line below
@@ -142,123 +143,79 @@ au BufReadPost *.theme set syntax=php
 au BufReadPost *.module set syntax=php
 au BufReadPost *.lock set syntax=json
 
-augroup markdown
-    au!
-    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-augroup END
-
 " Loads plugins def and config
 
 " Start plugins definition
 call plug#begin($HOME.'/.local/share/nvim/plugged')
 
 
-" Plug 'majutsushi/tagbar'
-" Plug 'hushicai/tagbar-javascript.vim'
-" Plug 'reedes/vim-pencil'
-" Plug 'tpope/vim-markdown'
-" Plug 'jtratner/vim-flavored-markdown'
-" Plug 'kablamo/vim-git-log'
-" Plug 'gregsexton/gitv'
-" Plug 'tpope/vim-fugitive'
-" Plug 'phpvim/phpcd.vim'
-" Plug 'tobyS/pdv'
-" Plug 'ryanoasis/vim-devicons'
-" Plug 'editorconfig/editorconfig-vim'
-" Plug 'bronson/vim-trailing-whitespace'
-" Plug 'Chiel92/vim-autoformat'
-" Plug 'elzr/vim-json'
-" Plug 'jeroenbourgois/vim-actionscript'
-" Plug 'dylanaraps/wal.vim'
-" Plug 'junegunn/vim-easy-align'
-" Plug 'terryma/vim-multiple-cursors'
-" Plug 'maxbrunsfeld/vim-yankstack'
-" Plug 'tpope/vim-surround'
-" Plug 'othree/yajs.vim'
-" Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'hail2u/vim-css3-syntax'
-" Plug 'csscomb/vim-csscomb'
-" Plug 'othree/html5.vim'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'moll/vim-node'
-" Plug 'syngan/vim-vimlint'
-" Plug 'ynkdir/vim-vimlparser'
-" Plug 'mattn/emmet-vim'
-" Plug 'morhetz/gruvbox'
-" Plug 'fcpg/vim-fahrenheit'
-" Plug 'ayu-theme/ayu-vim'
-" Plug 'plasticboy/vim-markdown'
+" Plug 'hail2u/vim-css3-syntax'
+Plug 'plasticboy/vim-markdown'
 Plug 'lumiliet/vim-twig'
-" Plug 'joonty/vdebug'
-" Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript'
-" Plug 'nathanaelkane/vim-indent-guides'
-" Plug 'shawncplus/phpcomplete.vim'
-" Plug 'mustache/vim-mustache-handlebars'
-" Plug 'danhodos/vim-comb'
-" Plug 'chrisbra/csv.vim'
-" Plug 'arcticicestudio/nord-vim'
-" Plug 'dracula/vim'
-" Plug 'PotatoesMaster/i3-vim-syntax'
-" Plug 'storyn26383/vim-vue'
-" Plug 'scrooloose/nerdtree'
-Plug 'storyn26383/vim-vue'
-" Plug 'tomtom/tcomment_vim'
 Plug 'cakebaker/scss-syntax.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'itchyny/lightline.vim'
-" Plug 'leafOfTree/vim-vue-plugin'
-" Plug 'tikhomirov/vim-glsl'
-" Plug 'Shougo/denite.nvim'
-" Plug 'plasticboy/vim-markdown'
-" Plug 'nelsyeung/twig.vim'
-" Plug 'StanAngeloff/php.vim'
-" Plug 'mustache/vim-mustache-handlebars'
-Plug 'tpope/vim-commentary'
-" Plug 'tyru/caw.vim'
-
-" Plug 'Shougo/context_filetype.vim'
-
+" Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'othree/jsdoc-syntax.vim'
 Plug 'Shougo/defx.nvim'
 Plug 'kristijanhusak/defx-icons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-Plug 'othree/csscomplete.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'othree/csscomplete.vim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'mhinz/vim-startify'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-vdebug/vdebug'
-" Plug 'posva/vim-vue'
+Plug 'posva/vim-vue'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'niftylettuce/vim-jinja'
+Plug 'derekwyatt/vim-scala'
+" Plug 'leafOfTree/vim-vue-plugin'
+" Plug 'storyn26383/vim-vue'
+Plug 'leafgarland/typescript-vim'
+" Plug 'yuratomo/w3m.vim'
+
+Plug 'amadeus/vim-mjml'
+
+Plug 'easymotion/vim-easymotion'
+
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Themes
 Plug 'ntk148v/vim-horizon'
 Plug 'srcery-colors/srcery-vim'
 Plug 'connorholyday/vim-snazzy'
 Plug 'ayu-theme/ayu-vim'
+Plug 'morhetz/gruvbox'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+
 
 call plug#end()
 set termguicolors
-set background=dark
+" set background=dark
 set t_Co=256
 " let ayucolor="dark"
-let ayucolor="mirage"
-colorscheme challenger_deep
+" let ayucolor="dark"
+colorscheme gruvbox
 
 hi Normal guibg=NONE ctermbg=NONE
-hi Comment guifg=#444364
-hi LineNr guibg=#19162A
+" hi Comment guifg=#444364
+" hi LineNr guibg=#19162A
 
-let g:polyglot_disabled = ['vue']
+let html_no_rendering=1
+
+let g:gruvbox_contrast_dark = 'dark'
 
 let g:LanguageClient_serverCommands = {
     \ 'vue': ['vls']
     \ }
+
+
+let g:vim_vue_plugin_load_full_syntax = 1
+let g:vim_vue_plugin_use_sass = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: indentLine
@@ -269,6 +226,13 @@ let g:indentLine_char = '┆'
 let g:indentLine_first_char = '┆'
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 1
+let g:indentLine_setConceal = 0
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: Startify
@@ -277,20 +241,20 @@ let g:indentLine_setColors = 1
 let g:startify_custom_header = []
 
 let g:startify_lists = [
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-          \ { 'type': 'commands',  'header': ['   Commands']       },
-          \ ]
+  \ { 'type': 'sessions',  'header': ['   Sessions']       },
+  \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+  \ { 'type': 'commands',  'header': ['   Commands']       },
+  \ ]
 
 let g:startify_bookmarks = [
-          \ {'c': '~/.vimrc'},
-          \ {'z': '~/.zshrc'},
-          \ {'e': '~/Development/ch.migros.engagement-hub'},
-          \ {'m': '~/Development/ch.migros.karriere'},
-          \ {'s': '~/Development/shader.how'},
-          \ {'d': '~/Development/drawmote-client'},
-          \ {'o': '~/Development/oris-web'},
-          \ ]
+  \ {'c': '~/.vimrc'},
+  \ {'z': '~/.zshrc'},
+  \ {'e': '~/Development/ch.migros.engagement-hub'},
+  \ {'m': '~/Development/ch.migros.karriere'},
+  \ {'s': '~/Development/shader.how'},
+  \ {'d': '~/Development/drawmote-client'},
+  \ {'o': '~/Development/oris-web'},
+  \ ]
 
 let g:startify_session_persistence = 1
 let g:startify_change_to_vcs_root = 1
@@ -315,6 +279,9 @@ let g:lightline = {
       \   'currentfunction': 'CocCurrentFunction'
       \ },
       \ }
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: coc
@@ -351,7 +318,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -368,6 +335,10 @@ nmap <leader>f  <Plug>(coc-format-selected)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmd FileType vue syntax sync fromstart
 " autocmd BufReadPost,BufNewFile *.vue setlocal filetype=vue
+
+" autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+" let g:vim_vue_plugin_load_full_syntax = 1
+" let g:vim_vue_plugin_debug = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: deoplete
@@ -463,54 +434,64 @@ nnoremap <Leader>- :Defx -split=vertical -winwidth=50 -direction=topleft<CR>
 " PLUGIN: FZF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" augroup fzf
+"   autocmd!
+"   autocmd! FileType fzf
+"   autocmd  FileType fzf set laststatus=0 noshowmode noruler
+"     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+" augroup END
+
 "
 " This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+" let g:fzf_action = {
+"   \ 'ctrl-t': 'tab split',
+"   \ 'ctrl-x': 'split',
+"   \ 'ctrl-v': 'vsplit' }
 
 " Default zf layout
 " - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
+" let g:fzf_layout = { 'down': '~40%' }
 
 " In Neovim, you can set up fzf window using a Vim command
 let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_layout = { 'window': '-tabnew' }
+" let g:fzf_layout = { 'window': '-tabnew' }
 
 " Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+" let g:fzf_colors =
+" \ { 'fg':      ['fg', 'Normal'],
+"   \ 'bg':      ['bg', 'Normal'],
+"   \ 'hl':      ['fg', 'Comment'],
+"   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"   \ 'hl+':     ['fg', 'Statement'],
+"   \ 'info':    ['fg', 'PreProc'],
+"   \ 'prompt':  ['fg', 'Conditional'],
+"   \ 'pointer': ['fg', 'Exception'],
+"   \ 'marker':  ['fg', 'Keyword'],
+"   \ 'spinner': ['fg', 'Label'],
+"   \ 'header':  ['fg', 'Comment'] }
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
-let g:fzf_history_dir = '~/.local/share/fzf-history'
+" let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-" map <C-p> :Files<CR>
-nnoremap <silent> <C-p> :call fzf#run({ 'source': 'ag -g ""', 'sink': 'e', 'window': 'enew' })<cr>
-
+" nnoremap <silent> <C-p> :Files<cr>
+nnoremap <silent> <C-a> :Ag<cr>
+let $FZF_DEFAULT_COMMAND = 'ag -g "" -U --path-to-ignore ~/.ignore'
+nnoremap <silent> <C-p> :call fzf#run({ 'source': 'ag -g "" -U --path-to-ignore ~/.ignore', 'sink': 'e', 'window': 'enew' })<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGIN: Prettier
+" PLUGIN: Vdebug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mapping '/remote/path' : '/local/path'
 let g:vdebug_options = {}
 let g:vdebug_options.path_maps = {
       \  '/var/www/ch.migros.karriere/web' : '/Users/dulnan/Development/ch.migros.karriere/web',
       \  '/var/www/oris-web' : '/Users/dulnan/Development/oris-web',
+      \  '/var/www/oris-web/docroot' : '/Users/dulnan/Development/oris-web/docroot',
+      \  '/var/www/asvz/web' : '/Users/dulnan/Development/asvz.ch-next/web',
       \}
 
 
@@ -521,25 +502,6 @@ command! -register JsDoc call jsdoc#insert()
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_input_description = 1
 let g:jsdoc_enable_es6 = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGIN: ctrlp
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-  let g:ctrlp_path_nolim = 0
-  let g:ctrlp_match_natural_name = 1
-  let g:ctrlp_working_path_mode = 0
-  let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn|sql))$'
-endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
