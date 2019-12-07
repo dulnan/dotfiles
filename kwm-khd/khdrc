@@ -1,61 +1,45 @@
 # system wide vim arrow mapping
-lctrl - j         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- down"
-lctrl - k         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- up"
+#lctrl - j         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- down"
+#lctrl - k         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- up"
 
 
-#cmd - return: open -n /Applications/Alacritty.app
+cmd - return: open -n /Applications/Alacritty.app
 
 
-
-
-
-
-cmd + shift + alt - r            :   khd -e "reload" && sh ~/.chunkwmrc
-cmd + alt + ctrl - r : khd -e "reload"
+#cmd + shift + alt - r            :   khd -e "reload" && sh ~/.chunkwmrc
+#cmd + alt + ctrl - r : khd -e "reload"
 
 # Move window
-cmd + ctrl - h                 :   chunkc tiling::window --warp west
-cmd + ctrl - l                 :   chunkc tiling::window --warp east
-cmd + ctrl - k                 :   chunkc tiling::window --warp north
-cmd + ctrl - j                 :   chunkc tiling::window --warp south
+cmd + ctrl - h                 :   yabai -m window --warp west
+cmd + ctrl - l                 :   yabai -m window --warp east
+cmd + ctrl - k                 :   yabai -m window --warp north
+cmd + ctrl - j                 :   yabai -m window --warp south
 
 # resize window
-cmd + -alt - h:   chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge west && chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge east
-cmd + alt - l:   chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge west && chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge east
-cmd + alt - k:   chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge north && chunkc tiling::window --use-temporary-ratio 0.02 --adjust-window-edge south
-cmd + alt - j:   chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge north && chunkc tiling::window --use-temporary-ratio -0.02 --adjust-window-edge south
+
+cmd + alt - h : yabai -m window --resize left:-40:0 && yabai -m window --resize right:-40:0
+cmd + alt - l : yabai -m window --resize right:40:0 && yabai -m window --resize left:40:0
+cmd + alt - k : yabai -m window --resize top:0:-40 && yabai -m window --resize bottom:0:-40
+cmd + alt - j : yabai -m window --resize bottom:0:40 && yabai -m window --resize top:0:40
 
 # focus window
-cmd + shift - h:   chunkc tiling::window --focus west
-cmd + shift - l:   chunkc tiling::window --focus east
-cmd + shift - k:   chunkc tiling::window --focus north
-cmd + shift - j:   chunkc tiling::window --focus south
+cmd + shift - h:   yabai -m window --focus west
+cmd + shift - l:   yabai -m window --focus east
+cmd + shift - k:   yabai -m window --focus north
+cmd + shift - j:   yabai -m window --focus south
 
 # move window to next display (0x2F = . )
 cmd + shift + ctrl - h                  :   bash ./Development/dotfiles/chunkwm/movewindow.sh left
 cmd + shift + ctrl - l                  :   bash ./Development/dotfiles/chunkwm/movewindow.sh right
-cmd + ctrl + alt - h            :   chunkc tiling::window --use-insertion-point west
-cmd + ctrl + alt - l            :   chunkc tiling::window --use-insertion-point east
-cmd + ctrl + alt - k            :   chunkc tiling::window --use-insertion-point north
-cmd + ctrl + alt - j            :   chunkc tiling::window --use-insertion-point south
 # make window fullscreen
 cmd + ctrl - f                  :   kwmc tiling::window -z fullscreen
 
-# # switch spaces
-# cmd - left                      :   chunkc window -d prev
-# cmd - right                     :   chunkc window -d next
+cmd - h : yabai -m space --focus prev
+cmd - l : yabai -m space --focus next
 
-# make window floatable
-cmd + ctrl + alt - f            :   chunkc tiling::window --toggle float
+cmd + ctrl + alt - f : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
 
-# set vertical or horizontal tiling
-cmd + ctrl + alt - up            :   chunkc tiling::desktop --mirror horizontal
-cmd + ctrl + alt - 0x2F            :   chunkc tiling::desktop --rotate 90
-
-cmd + shift + alt - r            :   brew services restart kwm
-cmd + shift + alt - s            :   kwmc window -c split-mode toggle
-
-ctrl + alt - h : chunkc tiling::window --use-insertion-point west
-ctrl + alt - j : chunkc tiling::window --use-insertion-point south
-ctrl + alt - k : chunkc tiling::window --use-insertion-point north
-ctrl + alt - l : chunkc tiling::window --use-insertion-point east
+ctrl + alt - h : yabai -m window --insert west
+ctrl + alt - j : yabai -m window --insert south
+ctrl + alt - k : yabai -m window --insert north
+ctrl + alt - l : yabai -m window --insert east

@@ -1,1 +1,0 @@
-../plugins/plugged/ayu-vim/colors/ayu.vim

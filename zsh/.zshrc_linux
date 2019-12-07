@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:/opt/anaconda/bin:/home/dulnan/.local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh/
+export PATH=/home/dulnan/bin:$PATH
+export PATH=/home/go/bin:$PATH
+export PATH=~/Library/Python/3.6/bin:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -85,7 +86,7 @@ export ARCHFLAGS="-arch x86_64"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+alias vim='nvim'
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
@@ -136,7 +137,3 @@ source ~/.cache/wal/colors-tty.sh
 
 
 
-
-
-# added by travis gem
-[ -f /home/dulnan/.travis/travis.sh ] && source /home/dulnan/.travis/travis.sh

@@ -1,0 +1,7 @@
+{
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20,
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascriptvue", "javascript-vue", "Vue", "Vue.js", "vue.js", "vue", "vuejs", "vetur", "javascript", "scss", "sass"],
+  "eslint.filetypes": ["javascript", "typescript", "javascriptvue", "vue"],
+  "eslint.autoFixOnSave": true
+}
