@@ -52,7 +52,7 @@ URxvt.cursorBlink : 0
 URxvt.lineSpace           : 1
 URxvt.letterSpace         : 0
 URxvt.scrollBar           : false
-URxvt.internalBorder      : 28
+URxvt.internalBorder      : 8
 URxvt.cursorUnderline     : false
 URxvt.geometry            : 70x35
 URxvt.thickness           : 5
@@ -82,19 +82,21 @@ rofi.show-match: false
 ! Mouse cursor stuff
 ! ------------------------------------------------------------------------------
 Xcursor.theme: Adwaita
-Xcursor.size: 18
+Xcursor.size: 32
 
 
-Xft.dpi:       144
+! Xft.dpi:       288
+! Xft.dpi:       192
+Xft.dpi:       96
 Xft.antialias: true
-! Xft.hinting:   true
+ Xft.hinting:   true
 ! Xft.rgba:      rgb
 ! Xft.hintstyle: hintslight
 ! Xft.lcdfilter: hintslight
 
 
 ! Xft.autohint: 0
-! Xft.lcdfilter: lcddefault
+ Xft.lcdfilter: lcddefault
 ! Xft.hintstyle: hintslight
 !Xft.hinting: 2
 ! Xft.rgba: rgb

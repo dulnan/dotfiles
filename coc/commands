@@ -1,3 +1,5 @@
 prettier.formatFile
+python.setInterpreter
+document.renameCurrentWord
 tsserver.openTsServerLog
 eslint.executeAutofix

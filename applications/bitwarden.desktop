@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bitwarden
+Exec=/opt/Bitwarden/bitwarden %U
+Exec=/home/dulnan/dotfiles/scripts/launchscaledapp.sh /opt/Bitwarden/bitwarden %U
+Terminal=false
+Type=Application
+Icon=bitwarden
+StartupWMClass=Bitwarden
+Comment=A secure and free password manager for all of your devices.
+Categories=Utility;

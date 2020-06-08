@@ -15,14 +15,14 @@ configuration {{
 }}
 
 * {{
-  font:                        "Iosevka Term Regular 40";
+  font:                        "Iosevka Term Regular 30";
 	text-color:                  {foreground};
 	selbg:                       #00FF00;
 	actbg:                       #14191f;
 	urgbg:                       #e53935;
 	winbg:			                 @text-color;
 	brand:                       #f29718;
-	gray-light:                  #737d87;
+	gray-light:                  {color8};
 	white:                       {foreground};
 
 	selected-normal-foreground:  @winbg;

@@ -10,7 +10,7 @@
 
 [colors]
 ;background = ${xrdb:background:#222}
-background = ${xrdb:background:#000000}
+background = #22111111
 background-alt = "#303540"
 foreground = ${xrdb:foreground:#FFFFFF}
 foreground-alt = "#d9d7ce"
@@ -36,12 +36,12 @@ color14 = ${xrdb:color14:#000000}
 color15 = ${xrdb:color15:#000000}
 
 [sizes]
-icon-padding = 0.5
+icon-padding = 0.0
 
-[bar/example]
+[bar/base]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 52
+height = 80
 radius = 0
 fixed-center = false
 
@@ -53,27 +53,35 @@ line-size = 0
 line-color = #f00
 
 border-top-size = 1
-border-top-color = ${colors.color6}
+border-top-color = ${colors.color8}
 border-bottom-size = 0
 border-bottom-color = #303540
 
-padding-left = 2
-padding-right = 3
-
-margin-bottom = 0
+padding-left = 0
+padding-right = 2
 
 module-margin-left = 4
 module-margin-right = 0
 
 bottom = true
 
-font-0 = Iosevka Nerd Font:style=Regular:size=15;4
-font-1 = Iosevka Nerd Font:style=Regular:size=17:antialias=true;4
-font-2 = Iosevka Nerd Font:style=Light:size=15:antialias=true;4
+; Modules Text
+font-0 = Iosevka Nerd Font:style=Regular:size=20;0
 
-modules-left = bspwm i3 xwindow
-modules-center = mpd
-modules-right = spotify volume memory cpu wlan eth broadband battery0 battery1 temperature date
+; Modules Icon Large
+font-1 = Iosevka Nerd Font:style=Regular:size=20:antialias=true;0
+
+; Modules Icon Small
+font-2 = Iosevka Nerd Font:style=Light:size=20:antialias=true;0
+
+; Module i3 Icon
+font-3 = Iosevka Nerd Font:style=Light:size=24:antialias=true;0
+
+; Module xwindow Text
+font-4 = Iosevka Nerd Font:style=Regular:size=20;0
+
+modules-left = i3
+modules-right = wlan vpn spotify volume memory cpu eth battery0 battery1 temperature date
 
 tray-position = right
 tray-padding = 2
@@ -97,6 +105,37 @@ enable-ipc = true
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+[bar/left]
+inherit = bar/base
+monitor = DP-0
+monitor-fallback = DP-2
+dpi-x = 40
+dpi-y = 40
+height = 40
+modules-left = i3
+modules-right = date
+
+[bar/right]
+inherit = bar/base
+monitor = DP-2.2
+monitor-fallback = DP-0.2
+dpi-x = 60
+dpi-y = 60
+height = 40
+margin-top = 10
+modules-left = i3
+modules-right = date
+
+[bar/middle]
+inherit = bar/base
+monitor = DP-2.3
+monitor-fallback = DP-1
+; dpi-x = 110
+; dpi-y = 110
+dpi-x = 80
+dpi-y = 80
+height = 60
+margin-top = 20
 
 [module/defaults]
 format-prefix-padding-right= ${sizes.icon-padding}
@@ -104,6 +143,7 @@ format-prefix-padding-right= ${sizes.icon-padding}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
+label-font = 5
 
 [module/bspwm]
 type = internal/bspwm
@@ -132,61 +172,92 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
-label-focused-font= 3
-label-unfocused-font= 3
-label-visible-font= 3
-label-urgent-font= 3
+label-focused-font= 4
+label-unfocused-font= 4
+label-visible-font= 4
+label-urgent-font= 4
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
-label-mode-padding = 1
-label-mode-foreground = "#000"
+pin-workspaces = true
+;
+label-mode-padding = 5
+label-mode-foreground = "#000" 
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = 
+label-focused = %icon%
 ; label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
-
+;
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = 
+; label-unfocused = 
+label-unfocused = %icon%
+label-unfocused-foreground = ${colors.color8}
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %icon%
 ; label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %icon%
 ; label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-default = G
+ws-icon-default = %index%
 
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+ws-icon-0  = 21;
+ws-icon-1  = 22;
+ws-icon-2  = 23;
+ws-icon-3  = 24;
+ws-icon-4  = 25;
+ws-icon-5  = 26;
+ws-icon-6  = 27;
+ws-icon-7  = 28;
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+ws-icon-8  = 31;
+ws-icon-9  = 32;
+ws-icon-10 = 33;
+ws-icon-11 = 34;
+ws-icon-12 = 35;
+ws-icon-13 = 36;
+ws-icon-14 = 37;
+ws-icon-15 = 38;
 
-label-song-maxlen = 25
-label-song-ellipsis = true
+ws-icon-16 = 11;
+ws-icon-17 = 12;
+ws-icon-18 = 13;
+ws-icon-19 = 14;
+ws-icon-20 = 15;
+ws-icon-21 = 16;
+ws-icon-22 = 17;
+ws-icon-23 = 18;
+
+ws-icon-24 = 1;
+ws-icon-25 = 2;
+ws-icon-26 = 3;
+ws-icon-27 = 4;
+ws-icon-28 = 5;
+ws-icon-29 = 6;
+ws-icon-30 = 7;
+ws-icon-31 = 8;
+
+
+; [module/mpd]
+; type = internal/mpd
+; format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+;
+; icon-prev = 
+; icon-stop = 
+; icon-play = 
+; icon-pause = 
+; icon-next = 
+;
+; label-song-maxlen = 25
+; label-song-ellipsis = true
 
 [module/xbacklight]
 inherit = module/defaults
@@ -217,7 +288,7 @@ type = internal/cpu
 interval = 2
 format-prefix-font = 2
 format-prefix = 勞
-format-prefix-foreground = ${colors.color3}
+format-prefix-foreground = ${colors.color8}
 format-underline = #f90000
 label = %percentage:2%%
 
@@ -227,14 +298,14 @@ type = internal/memory
 interval = 2
 format-prefix = "ﳀ "
 format-prefix-font = 2
-format-prefix-foreground = ${colors.color4}
+format-prefix-foreground = ${colors.color8}
 format-underline = #4bffdc
 label = %mb_used%
 
 [module/wlan]
 inherit = module/defaults
 type = internal/network
-interface = wlp58s0
+interface = wlp82s0
 interval = 3.0
 
 ramp-signal-font = 2
@@ -279,6 +350,13 @@ format = <label>
 interval = 2
 format-prefix-font = 2
 
+[module/vpn]
+type = custom/script
+
+exec = /home/dulnan/.config/polybar/vpn.sh
+format = <label>
+interval = 2
+format-prefix-font = 2
 
 [module/eth]
 inherit = module/defaults
@@ -327,9 +405,9 @@ label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix-font = 2
-format-muted-prefix-foreground = ${colors.color1}
+format-muted-prefix-foreground = ${colors.color8}
 format-muted-prefix = "婢 "
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${colors.color8}
 label-muted = "muted"
 
 bar-volume-width = 10
@@ -368,11 +446,12 @@ format-full-prefix = " "
 format-full-prefix-foreground = ${colors.color10}
 format-full-underline = ${self.format-charging-underline}
 
+ramp-capacity-font = 3
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-0-foreground = ${colors.color1}
-ramp-capacity-foreground = ${colors.color2}
+ramp-capacity-0-foreground = ${colors.color7}
+ramp-capacity-foreground = ${colors.color7}
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -391,7 +470,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.color7}
 format-prefix-font = 2
 format-prefix =
 format = <ramp> <label>
@@ -406,8 +485,8 @@ label-warn-foreground = ${colors.foreground-alt}
 ramp-0 =﨎
 ramp-1 =﨎
 ramp-2 =﨏
-ramp-2-foreground = ${colors.color2}
-ramp-foreground = ${colors.color2}
+ramp-2-foreground = ${colors.color7}
+ramp-foreground = ${colors.color7}
 ramp-font= 2
 
 [module/powermenu]

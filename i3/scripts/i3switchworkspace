@@ -4,13 +4,15 @@ MODE=$1
 FKEY=$2
 FOCUSEDOUTPUT=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).output' | cut -d"\"" -f2)
 
-
-if [ "$FOCUSEDOUTPUT" = "DP-2" ]
+if [ "$FOCUSEDOUTPUT" = "DP-0.3" ] || [ "$FOCUSEDOUTPUT" = "DP-0" ]
+	then
+	WORKSPACE=$((FKEY + 10))
+elif [ "$FOCUSEDOUTPUT" = "DP-0.2" ] || [ "$FOCUSEDOUTPUT" = "DP-2.3" ]
 	then
 	WORKSPACE=$((FKEY + 20))
-elif [ "$FOCUSEDOUTPUT" = "DP-4" ]
+elif [ "$FOCUSEDOUTPUT" = "DP-2" ] || [ "$FOCUSEDOUTPUT" = "DP-2.2" ]
 	then
-	WORKSPACE=$((FKEY + 40))
+	WORKSPACE=$((FKEY + 30))
 else
 	WORKSPACE=$((FKEY))
 fi
@@ -18,7 +20,7 @@ fi
 
 if [ "$MODE" = "focus" ]
 	then
-	i3-msg "workspace ${WORKSPACE}"
+	i3-msg "workspace number ${WORKSPACE}"
 elif [ "$MODE" = "move" ]
 	then
 	i3-msg "move container to workspace ${WORKSPACE}"

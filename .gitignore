@@ -1,6 +1,10 @@
 /vim/.netrwhist
 /ranger/bookmarks
+coc/extensions
 coc/extensions/node_modules
 coc/extensions/.cache
 coc/extensions/coc-phpls-data
 coc/history.json
+coc/memos.json
+icons/node_modules
+node_modules

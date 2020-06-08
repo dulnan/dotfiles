@@ -1,5 +1,8 @@
 let MACENV = $MACENV
 
+let g:python3_host_prog='/usr/bin/python3.8'
+let g:python_host_prog='/usr/bin/python2.7'
+
 filetype plugin on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GENERAL SETTINGS
@@ -11,7 +14,7 @@ set nowrap                          " wrap end of line
 set number                          " show line numbers
 set relativenumber                  " show relative numbers
 syntax on                           " syntax highlighting
-set clipboard=unnamedplus
+set clipboard=unnamed
 set foldmethod=manual
 set mouse=a
 set spelllang=en_us
@@ -19,6 +22,7 @@ set nospell
 set ruler
 set laststatus=2
 set nocursorline
+set iskeyword-=_
 
 " highlight EndOfBuffer ctermfg=black ctermbg=black
 
@@ -111,7 +115,7 @@ onoremap in[ :<c-u>normal! f[vi[<cr>
 nnoremap <leader>ev :split $MYVIMRC<cr>
 
 " Source MYVIMRC
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>s :source $MYVIMRC<cr>
 
 " Leave insert mode (like <esc>) and disable <esc>
 inoremap jk <esc>
@@ -133,36 +137,59 @@ nnoremap <silent> <C-w>v :vnew<CR>
 
 nnoremap <leader>t :terminal<CR>
 nnoremap <leader>b :Gblame<CR>
+nnoremap <leader>l :Gblame<CR>
 nnoremap <leader>a :Ag<CR>
 nnoremap <leader>j :JsDoc<CR>
 nnoremap <leader>q :qall<CR>
 tnoremap jk <C-\><C-n>
 
 " Enable php syntax for drupal theme and module files.
-au BufReadPost *.theme set syntax=php
-au BufReadPost *.module set syntax=php
 au BufReadPost *.lock set syntax=json
+
+" au BufReadPost *.njk set syntax=html.twig
+autocmd bufreadpre *.twig setlocal textwidth=0
+" autocmd bufreadpre *.njk setlocal textwidth=0
+autocmd bufreadpre *.html setlocal textwidth=0
+
+" Drupal *.module and *.install files.
+augroup module
+  autocmd BufRead,BufNewFile *.module set filetype=php
+  autocmd BufRead,BufNewFile *.theme set filetype=php
+  autocmd BufRead,BufNewFile *.install set filetype=php
+  autocmd BufRead,BufNewFile *.test set filetype=php
+  autocmd BufRead,BufNewFile *.inc set filetype=php
+  autocmd BufRead,BufNewFile *.profile set filetype=php
+  autocmd BufRead,BufNewFile *.view set filetype=php
+augroup END
+
+autocmd BufReadPost,BufNewFile *.njk setlocal filetype=html.twig
 
 " Loads plugins def and config
 
 " Start plugins definition
 call plug#begin($HOME.'/.local/share/nvim/plugged')
 
-
 " Plug 'hail2u/vim-css3-syntax'
 Plug 'plasticboy/vim-markdown'
-Plug 'lumiliet/vim-twig'
+Plug 'agfline/c-syntax.vim'
+" Plug 'lumiliet/vim-twig'
+Plug 'nelsyeung/twig.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'cakebaker/scss-syntax.vim'
 " Plug 'tpope/vim-commentary'
 Plug 'tomtom/tcomment_vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'othree/jsdoc-syntax.vim'
-Plug 'Shougo/defx.nvim'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kristijanhusak/defx-icons'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" Plug 'laher/fuzzymenu.vim'
+Plug 'dyng/ctrlsf.vim'
+Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
+Plug 'arrufat/vala.vim'
 " Plug 'othree/csscomplete.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'mhinz/vim-startify'
@@ -177,12 +204,15 @@ Plug 'derekwyatt/vim-scala'
 " Plug 'storyn26383/vim-vue'
 Plug 'leafgarland/typescript-vim'
 " Plug 'yuratomo/w3m.vim'
-
+Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'amadeus/vim-mjml'
+Plug 'dylanaraps/wal.vim'
+Plug 'jparise/vim-graphql'
 
 Plug 'easymotion/vim-easymotion'
-
+Plug 'chr4/nginx.vim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'rhysd/vim-clang-format'
 
 " Themes
 Plug 'ntk148v/vim-horizon'
@@ -191,23 +221,33 @@ Plug 'connorholyday/vim-snazzy'
 Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'ntk148v/vim-horizon'
+Plug 'ayu-theme/ayu-vim-airline'
 
 
 call plug#end()
 set termguicolors
-" set background=dark
 set t_Co=256
 " let ayucolor="dark"
 " let ayucolor="dark"
-colorscheme gruvbox
+" colorscheme horizon
 
-hi Normal guibg=NONE ctermbg=NONE
 " hi Comment guifg=#444364
 " hi LineNr guibg=#19162A
 
 let html_no_rendering=1
 
-let g:gruvbox_contrast_dark = 'dark'
+" let g:gruvbox_contrast_dark = 'hard'
+" let g:gruvbox_vert_split = 'bg1'
+set background=dark
+colorscheme srcery
+
+" hi Normal guibg=NONE ctermbg=NONE
+" autocmd ColorScheme * highlight! Normal ctermbg=NONE guibg=NONE
+
+let g:lightline = {
+      \ 'colorscheme': 'srcery',
+      \ }
 
 let g:LanguageClient_serverCommands = {
     \ 'vue': ['vls']
@@ -222,11 +262,11 @@ let g:vim_vue_plugin_use_sass = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:indentLine_leadingSpaceEnabled = 1
 " let g:indentLine_leadingSpaceChar = '∙'
-let g:indentLine_char = '┆'
-let g:indentLine_first_char = '┆'
-let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_setColors = 1
-let g:indentLine_setConceal = 0
+" let g:indentLine_char = '┆'
+" let g:indentLine_first_char = '┆'
+" let g:indentLine_showFirstIndentLevel = 1
+" let g:indentLine_setColors = 1
+" let g:indentLine_setConceal = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -262,26 +302,10 @@ let g:startify_change_to_vcs_root = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: Lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
-
-      " \ 'colorscheme': 'srcery',
-let g:lightline = {
-      \ 'colorscheme': 'challenger_deep',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
-      \ },
-      \ }
-
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme='ayu'
+let g:airline#extensions#branch#enabled = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: coc
@@ -328,7 +352,13 @@ nmap <leader>rn <Plug>(coc-rename)
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
+let g:coc_filetype_map = {
+      \ 'jinja': 'html',
+      \ }
+
 " autocmd BufWritePost *.vue Prettier
+
+" Twig
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: vim-vue
@@ -478,9 +508,48 @@ let g:fzf_layout = { 'window': 'enew' }
 " let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " nnoremap <silent> <C-p> :Files<cr>
-nnoremap <silent> <C-a> :Ag<cr>
+nnoremap <silent> <C-a> :Rg<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -g "" -U --path-to-ignore ~/.ignore'
-nnoremap <silent> <C-p> :call fzf#run({ 'source': 'ag -g "" -U --path-to-ignore ~/.ignore', 'sink': 'e', 'window': 'enew' })<cr>
+" nnoremap <silent> <C-p> :call fzf#run({ 'source': 'ag -g "" -U --path-to-ignore ~/.ignore', 'sink': 'e', 'window': 'enew' })<cr>
+nnoremap <silent> <C-p> :Files<cr>
+nnoremap <silent> <C-b> :Buffers<cr>
+nnoremap <silent> <C-o> :Commands<cr>
+
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+\ call fzf#vim#files(<q-args>, {'window': { 'width': 0.8, 'height': 0.3, 'yoffset': 0.1, 'border': 'rounded' }, 'options': ['--layout=reverse', '--margin=1,2']})
+
+command! -bang -nargs=? -complete=dir Buffers
+\ call fzf#vim#buffers({'window': { 'width': 0.4, 'height': 0.3, 'xoffset': 0.5, 'border': 'rounded' }, 'options': ['--layout=reverse', '--margin=1,2']})
+
+command! -bang -nargs=? -complete=dir Commands
+\ call fzf#vim#commands({'window': { 'width': 0.4, 'height': 0.3, 'xoffset': 0.5, 'border': 'rounded' }, 'options': ['--layout=reverse', '--margin=1,2']})
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'window': { 'width': 0.9, 'height': 0.9, 'xoffset': 0.5, 'border': 'rounded' }, 'options': ['--layout=reverse', '--margin=1,2']}), <bang>0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" command! -bang -nargs=? -complete=dir Files
+" \ call fzf#vim#files(<q-args>, {'options': ['--info=inline']}, <bang>0)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: Vdebug
@@ -488,10 +557,14 @@ nnoremap <silent> <C-p> :call fzf#run({ 'source': 'ag -g "" -U --path-to-ignore 
 " Mapping '/remote/path' : '/local/path'
 let g:vdebug_options = {}
 let g:vdebug_options.path_maps = {
-      \  '/var/www/ch.migros.karriere/web' : '/Users/dulnan/Development/ch.migros.karriere/web',
-      \  '/var/www/oris-web' : '/Users/dulnan/Development/oris-web',
-      \  '/var/www/oris-web/docroot' : '/Users/dulnan/Development/oris-web/docroot',
-      \  '/var/www/asvz/web' : '/Users/dulnan/Development/asvz.ch-next/web',
+      \  '/var/www/ch.migros.karriere/web' : '/home/dulnan/development/ch.migros.karriere/web',
+      \  '/var/www/oris-web' : '/home/dulnan/development/oris-web',
+      \  '/var/www/oris-web/docroot' : '/home/dulnan/development/oris-web/docroot',
+      \  '/var/www/zuerich.com' : '/home/dulnan/development/zuerich.com',
+      \  '/var/www/zuerich.com/docroot' : '/home/dulnan/development/zuerich.com/docroot',
+      \  '/var/www/asvz/web' : '/home/dulnan/development/asvz.ch-next/web',
+      \  '/var/www/shkb' : '/home/dulnan/development/shkb.next',
+      \  '/var/www/shkb/docroot' : '/home/dulnan/development/shkb.next/docroot',
       \}
 
 
@@ -526,8 +599,33 @@ function! GlobalSearchReplace()
 
   execute 'args ' . folder . pattern
   set nomagic
-  execute 'argdo %s/'.search.'/'.replace.'/g'
+  execute 'argdo %s/'.search.'/'.replace.'/ge'
   set magic
 endfunction
 
 command SearchReplace call GlobalSearchReplace()
+
+autocmd FileType c ClangFormatAutoEnable
+
+let g:clang_format#style_options = {
+            \ "ColumnLimit" : 120,
+            \ "Standard" : "C++11"}
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FUNCTION: Delete empty buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! DeleteEmptyBuffers()
+    let [i, n; empty] = [1, bufnr('$')]
+    while i <= n
+        if bufexists(i) && bufname(i) == ''
+            call add(empty, i)
+        endif
+        let i += 1
+    endwhile
+    if len(empty) > 0
+        exe 'bdelete' join(empty)
+    endif
+endfunction

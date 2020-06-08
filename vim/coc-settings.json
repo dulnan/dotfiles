@@ -2,7 +2,7 @@
   "suggest.noselect": true,
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "json", "Vue", "Vue.js", "vue.js", "vue", "vuejs", "vetur", "javascript", "scss", "sass"],
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "json", "Vue", "Vue.js", "vue.js", "vue", "vuejs", "vetur", "javascript", "scss", "sass", "typescript", "ts", "html", "html.twig", "twig", "nunjucks"],
   "eslint.filetypes": ["javascript", "typescript", "vue"],
   "eslint.autoFixOnSave": true,
   "prettier.formatterPriority": 10,
@@ -12,9 +12,45 @@
   "vetur.format.defaultFormatter.html": "prettier",
   "vetur.format.defaultFormatter.scss": "prettier",
   "vetur.format.defaultFormatter.js": "prettier",
-  "vetur.completion.useScaffoldSnippets": false,
+  "vetur.completion.useScaffoldSnippets": true,
   "vetur.validation.template": true,
   "vetur.experimental.templateInterpolationService": false,
-  "vetur.dev.vlsPath": "/usr/local/lib/node_modules/vue-language-server",
-  "vetur.completion.autoImport": true
+  "vetur.completion.autoImport": true,
+  "html.filetypes": ["html", "twig", "njk", "nunjucks", "html.twig"],
+  "python.jediEnabled": true,
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "initializationOptions": {
+         "cache": {
+           "directory": "/tmp/ccls"
+         }
+       }
+    },
+    "vala": {
+      "command": "vala-language-server",
+      "filetypes": ["vala"]
+    },
+    "intelephense": {
+      "command": "intelephense",
+      "args": ["--stdio"],
+      "filetypes": ["php"],
+      "files": {
+        "associations": [
+        "*.php",
+        "*.inc",
+        "*.module",
+        "*.test",
+        "*.profile",
+        "*.theme"
+        ]
+      },
+      "initializationOptions": {
+        "storagePath": "/tmp/intelephense"
+      }
+    }
+  }
 }
+
